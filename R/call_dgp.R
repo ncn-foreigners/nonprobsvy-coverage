@@ -13,7 +13,9 @@
 call_dgp <- function(dgp_id, cell) {
   fn <- switch(
     dgp_id,
-    "default" = dgp_default,
+    "default"  = dgp_default,
+    "kim2021"  = dgp_kim2021,
+    "yang2021" = dgp_yang2021,
     stop("Unknown DGP id: '", dgp_id, "'. ",
          "Add it to R/call_dgp.R::call_dgp().")
   )

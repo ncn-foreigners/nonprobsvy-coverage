@@ -57,6 +57,9 @@ jobs:
       - name: Install nonprobcover (this repo)
         run: R CMD INSTALL --no-help --no-html --no-byte-compile .
 
+      - name: Run package tests
+        run: Rscript -e 'library(nonprobcover); testthat::test_dir("tests/testthat", stop_on_failure = TRUE, reporter = testthat::SummaryReporter)'
+
       - name: Run simulations
         run: Rscript scripts/ipw/ipw_mle.R
 
