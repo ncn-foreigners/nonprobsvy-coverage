@@ -1,0 +1,20 @@
+---
+title: "IPW (variable selection: SCAD / lasso / MCP)"
+---
+
+```{r setup}
+#| include: false
+source("../_helpers.R")
+```
+
+Inverse probability weighting with a penalised propensity score. The selection formula includes a redundant covariate `x3` (which the DGP does *not* use for selection); each penalty should learn to drop it.
+
+```{r table, results = "asis"}
+render_coverage_page("ipw", "ipw_scad")
+```
+
+## Notes
+
+- DGP: `default` with selection formula `~ x1 + x2 + x3`. True selection uses only `x1` and `x2`, so `x3` is the noise variable.
+- `n_reps` is intentionally smaller here (30) because each replicate runs cross-validation inside `control_sel(penalty = ...)`. MC SE is correspondingly larger — read the table accordingly.
+- Coverage differences across SCAD, lasso, and MCP largely come from how aggressively each penalty zeros out the noise coefficient.

@@ -1,0 +1,16 @@
+script: ipw_kim2021
+estimator: ipw
+dgp: kim2021
+
+selection_formula: "~ x"
+
+n_pop: [100000]
+n_nonprob: [1000]
+n_prob: [500]
+method_selection: [logit]
+target_var: ["y1", "y2", "y3"]
+var_method: [analytic]
+
+n_reps: 100
+alpha: [0.05]
+seed: 2026

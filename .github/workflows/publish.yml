@@ -1,86 +1,51 @@
 name: publish
 
+# Re-render the Quarto site without rerunning simulations.
+# Triggered by doc-only changes and by manual dispatch.
+# Each <family>_sim.yml workflow ALSO renders + deploys at the end of its
+# run, so this workflow is mostly for "I edited a qmd, just rebuild".
+
 on:
   workflow_dispatch:
-    inputs:
-      nonprobsvy_ref:
-        description: "git ref of ncn-foreigners/nonprobsvy to install"
-        default: "dev"
-        required: false
-  schedule:
-    # Weekly rebuild every Sunday 05:00 UTC. Catches regressions in
-    # nonprobsvy@dev even when nobody pushes to this repo.
-    - cron: "0 5 * * 0"
   push:
     branches: [main]
     paths:
-      - 'R/**'
-      - 'scripts/**'
       - 'doc/**'
       - '_quarto.yml'
       - 'index.qmd'
-      - 'DESCRIPTION'
-      - 'NAMESPACE'
+      - 'README.md'
       - '.github/workflows/publish.yml'
 
 permissions:
-  contents: write
+  contents: read
   pages: write
-  id-token: write
 
 concurrency:
-  group: publish-${{ github.ref }}
+  group: pages
   cancel-in-progress: false
 
 jobs:
-  build:
+  render:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
-    env:
-      NPC_WORKERS: 2
-      NONPROBSVY_REF: ${{ inputs.nonprobsvy_ref || 'dev' }}
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
 
       - uses: r-lib/actions/setup-r@v2
         with:
           use-public-rspm: true
-
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           cache-version: 1
           extra-packages: |
             any::knitr
             any::rmarkdown
-            ncn-foreigners/nonprobsvy@${{ inputs.nonprobsvy_ref || 'dev' }}
-
-      - name: Install nonprobcover (this repo)
+      - name: Install nonprobcover
         run: R CMD INSTALL --no-help --no-html --no-byte-compile .
 
-      - name: Run package tests
-        run: Rscript -e 'library(nonprobcover); testthat::test_dir("tests/testthat", stop_on_failure = TRUE, reporter = testthat::SummaryReporter)'
-
-      - name: Run simulations
-        run: Rscript scripts/ipw/ipw_mle.R
-
-      - name: Commit updated results
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add results/
-          if git diff --staged --quiet; then
-            echo "No result changes to commit."
-          else
-            git commit -m "ci: update coverage results"
-            sleep $((10 + RANDOM % 290))
-            git push
-          fi
-
       - uses: quarto-dev/quarto-actions/setup@v2
-
       - name: Render site
         run: quarto render
-
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages

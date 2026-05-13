@@ -1,0 +1,22 @@
+---
+title: "IPW (MLE) on the Kim et al. (2021) DGP"
+---
+
+```{r setup}
+#| include: false
+source("../_helpers.R")
+```
+
+Inverse probability weighting (MLE) on the data-generating process from Kim, Park, Chen & Wu (2021), *JRSSA* 184(3). The DGP draws `x ~ N(2, 1)` and three outcomes constructed so that all three have theoretical population mean 5. The non-probability sample oversamples the lower tail of `x` (70% from `strata == TRUE`, 30% from `strata == FALSE`).
+
+```{r table, results = "asis"}
+render_coverage_page("ipw", "ipw_kim2021")
+```
+
+## Notes
+
+- `y1 = 1 + 2 x + e` is linear in `x` — the propensity model is correctly specified for this outcome.
+- `y2 = 3 + x + 2 e` is also linear in `x` but with a different scale.
+- `y3 = 2.5 + 0.5 x^2 + e` is non-linear in `x`. The propensity adjustment still corrects the design bias, but residual coverage behaviour can differ — see the rows.
+
+Source: [`ncn-foreigners/software-tutorials/codes/2021-kim-et-al-jrssa.R`](https://github.com/ncn-foreigners/software-tutorials/blob/main/codes/2021-kim-et-al-jrssa.R).

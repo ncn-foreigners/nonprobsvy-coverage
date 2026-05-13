@@ -1,0 +1,20 @@
+script: ipw_scad
+estimator: ipw
+dgp: default
+
+# Include x3 (noise variable) so the penalty has something to prune.
+selection_formula: "~ x1 + x2 + x3"
+
+n_pop: [10000]
+n_nonprob: [500]
+n_prob: [500]
+method_selection: [logit]
+target_var: ["y"]
+vars_selection: [true]
+penalty: [SCAD, lasso, MCP]
+nfolds: [5]
+var_method: [analytic]
+
+n_reps: 30        # CV inside each replicate is slow
+alpha: [0.05]
+seed: 2026

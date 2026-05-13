@@ -12,12 +12,16 @@
 #' @param n_nonprob Expected non-probability sample size. The selection
 #'   intercept is calibrated so E\[sum(R_i)\] = n_nonprob.
 #' @param n_prob Probability sample size (SRS).
+#' @param target_var Name of the outcome column to expose as `true_target`.
+#'   Only `"y"` is meaningful for this DGP, but the argument exists so the
+#'   contract matches the paper DGPs (Kim 2021, Yang 2021, ...).
 #' @param ... Ignored. Accepts extra arguments from generic callers so the
 #'   dispatcher can pass the full parameter cell without erroring.
 #' @return A list with `pop` (data.table), `nonprob_idx`, `prob_idx`,
 #'   `prob_design` (svydesign), `true_target`.
 #' @export
-dgp_default <- function(n_pop = 10000, n_nonprob = 500, n_prob = 500, ...) {
+dgp_default <- function(n_pop = 10000, n_nonprob = 500, n_prob = 500,
+                        target_var = "y", ...) {
   N <- as.integer(n_pop)
   x1 <- stats::rnorm(N)
   x2 <- stats::rnorm(N)
@@ -47,6 +51,6 @@ dgp_default <- function(n_pop = 10000, n_nonprob = 500, n_prob = 500, ...) {
     nonprob_idx  = nonprob_idx,
     prob_idx     = prob_idx,
     prob_design  = prob_design,
-    true_target  = mean(y)
+    true_target  = mean(pop[[as.character(target_var)]])
   )
 }

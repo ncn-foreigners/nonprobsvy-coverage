@@ -1,0 +1,19 @@
+---
+title: "IPW (GEE calibration)"
+---
+
+```{r setup}
+#| include: false
+source("../_helpers.R")
+```
+
+Inverse probability weighting where the propensity score parameters solve a generalised estimating equation (calibration-style constraints) rather than the maximum-likelihood score. Both smoothing variants from the literature are shown — `gee_h_fun = 1` (logarithmic) and `gee_h_fun = 2` (exponential).
+
+```{r table, results = "asis"}
+render_coverage_page("ipw", "ipw_gee")
+```
+
+## Notes
+
+- DGP: the same simple `default` DGP used for the MLE table (linear outcome, logistic selection on `x1` and `x2`).
+- Compared to MLE, GEE typically gives slightly wider CIs because it solves a constraint system rather than maximising likelihood; that often translates into over-coverage.

@@ -1,4 +1,4 @@
-script: ipw_mle
+script: ipw_gee
 estimator: ipw
 dgp: default
 
@@ -8,7 +8,9 @@ n_pop: [10000]
 n_nonprob: [500]
 n_prob: [500]
 method_selection: [logit]
-target_var: ["y"]   # quoted: bare 'y' is a YAML 1.1 boolean (TRUE)
+target_var: ["y"]
+est_method: [gee]
+gee_h_fun: [1, 2]
 var_method: [analytic]
 
 n_reps: 50

@@ -16,6 +16,13 @@ website:
         menu:
           - text: IPW (MLE)
             href: doc/ipw/ipw_mle.qmd
+          - text: IPW (GEE)
+            href: doc/ipw/ipw_gee.qmd
+          - text: IPW (variable selection)
+            href: doc/ipw/ipw_scad.qmd
+          - text: "---"
+          - text: Kim et al. (2021) DGP
+            href: doc/ipw/ipw_kim2021.qmd
     right:
       - icon: github
         href: https://github.com/ncn-foreigners/nonprobsvy-coverage
