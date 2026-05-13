@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "doc/ipw/ipw_mle.html",
+    "href": "doc/ipw/ipw_mle.html",
+    "title": "IPW (MLE)",
+    "section": "",
+    "text": "Empirical coverage of the inverse probability weighting estimator with the propensity score fit by maximum likelihood. Spike scope: one DGP (default), logit link, analytical variance.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-13 18:43:16  |  commit: 2e52d91"
+  },
+  {
+    "objectID": "doc/ipw/ipw_mle.html#notes",
+    "href": "doc/ipw/ipw_mle.html#notes",
+    "title": "IPW (MLE)",
+    "section": "Notes",
+    "text": "Notes\n\nDGP: linear outcome y = 1 + x1 + 0.5 x2 - 0.3 x3 + N(0, 1) with logistic selection biased by x1 and x2. True target is the population mean of y.\nThe MC SE of the point estimate is reported next to each cell — it bounds how precisely we can pin down the empirical coverage.\nBootstrap variants and the full estimator × DGP matrix will be added in subsequent passes."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "nonprobsvy Coverage",
+    "section": "",
+    "text": "Empirical evidence that the confidence intervals produced by the nonprobsvy R package achieve their nominal coverage levels under the data-generating processes from the methods literature. Modeled after doubleml-coverage.\nEvery coverage table on this site is computed automatically by GitHub Actions and updated whenever the package or this repo’s simulation code changes."
+  },
+  {
+    "objectID": "index.html#what-this-is",
+    "href": "index.html#what-this-is",
+    "title": "nonprobsvy Coverage",
+    "section": "",
+    "text": "Empirical evidence that the confidence intervals produced by the nonprobsvy R package achieve their nominal coverage levels under the data-generating processes from the methods literature. Modeled after doubleml-coverage.\nEvery coverage table on this site is computed automatically by GitHub Actions and updated whenever the package or this repo’s simulation code changes."
+  },
+  {
+    "objectID": "index.html#how-to-read-the-tables",
+    "href": "index.html#how-to-read-the-tables",
+    "title": "nonprobsvy Coverage",
+    "section": "How to read the tables",
+    "text": "How to read the tables\nEach row of a coverage table is one parameter cell (one combination of sample sizes, link function, variance method, etc.). The coverage column is the proportion of n_reps Monte Carlo replicates whose confidence interval contained the true population mean of y. Cells are colored:\n\ngreen: empirical coverage is within one Monte Carlo SE of the nominal level.\namber: within two Monte Carlo SE.\nred: beyond two Monte Carlo SE.\n\nThe footer of each table reports the number of replicates and the Monte Carlo SE of the point estimate, so a reader can judge the precision of the coverage estimate itself."
+  },
+  {
+    "objectID": "index.html#status",
+    "href": "index.html#status",
+    "title": "nonprobsvy Coverage",
+    "section": "Status",
+    "text": "Status\nThis is an early-stage spike with one estimator (IPW MLE) on a small custom DGP. The full estimator × DGP matrix will be filled in over the coming weeks — see the plan for details."
+  }
+]
