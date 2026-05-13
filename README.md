@@ -2,7 +2,7 @@
 
 Coverage simulations for the [nonprobsvy](https://github.com/ncn-foreigners/nonprobsvy) R package, modeled after [DoubleML/doubleml-coverage](https://github.com/DoubleML/doubleml-coverage).
 
-The rendered site lives at **https://ncn-foreigners.github.io/nonprobsvy-coverage/** (once GitHub Pages is enabled on `gh-pages`).
+The rendered site lives at **https://ncn-foreigners.ue.poznan.pl/nonprobsvy-coverage/**.
 
 ## What's here
 
