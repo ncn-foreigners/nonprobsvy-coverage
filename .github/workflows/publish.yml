@@ -17,7 +17,7 @@ on:
       - '.github/workflows/publish.yml'
 
 permissions:
-  contents: read
+  contents: write       # needed to push to the gh-pages branch
   pages: write
 
 concurrency:
