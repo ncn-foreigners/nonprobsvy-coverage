@@ -1,0 +1,20 @@
+---
+title: "IPW (MLE)"
+---
+
+```{r setup}
+#| include: false
+source("../_helpers.R")
+```
+
+Empirical coverage of the inverse probability weighting estimator with the propensity score fit by maximum likelihood. Spike scope: one DGP (`default`), `logit` link, analytical variance.
+
+```{r table, results = "asis"}
+render_coverage_page("ipw", "ipw_mle")
+```
+
+## Notes
+
+- DGP: linear outcome `y = 1 + x1 + 0.5 x2 - 0.3 x3 + N(0, 1)` with logistic selection biased by `x1` and `x2`. True target is the population mean of `y`.
+- The MC SE of the point estimate is reported next to each cell — it bounds how precisely we can pin down the empirical coverage.
+- Bootstrap variants and the full estimator × DGP matrix will be added in subsequent passes.

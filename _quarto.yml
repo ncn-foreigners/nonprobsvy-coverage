@@ -1,0 +1,35 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "nonprobsvy Coverage"
+  description: "Empirical coverage of confidence intervals from the nonprobsvy R package."
+  repo-url: https://github.com/ncn-foreigners/nonprobsvy-coverage
+  repo-actions: [edit, issue]
+  navbar:
+    background: light
+    left:
+      - text: Home
+        href: index.qmd
+      - text: IPW
+        menu:
+          - text: IPW (MLE)
+            href: doc/ipw/ipw_mle.qmd
+    right:
+      - icon: github
+        href: https://github.com/ncn-foreigners/nonprobsvy-coverage
+  page-footer:
+    left: "Built with [Quarto](https://quarto.org). Source on [GitHub](https://github.com/ncn-foreigners/nonprobsvy-coverage)."
+    right: "NCN OPUS 20 grant no. 2020/39/B/HS4/00941"
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-tools: false
+    knitr:
+      opts_chunk:
+        echo: false
+        warning: false
+        message: false

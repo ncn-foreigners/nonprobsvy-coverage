@@ -1,0 +1,36 @@
+# R
+.Rhistory
+.RData
+.Rapp.history
+.Ruserdata
+*.Rcheck/
+*.tar.gz
+.Rproj.user/
+
+# renv
+renv/library/
+renv/local/
+renv/cellar/
+renv/lock/
+renv/python/
+renv/staging/
+
+# Quarto
+/_site/
+/.quarto/
+*_files/
+*_cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.swp
+
+# Logs
+*.log
+logs/
+
+**/*.quarto_ipynb

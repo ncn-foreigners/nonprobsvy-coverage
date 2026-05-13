@@ -1,0 +1,16 @@
+script: ipw_mle
+estimator: ipw
+dgp: default
+
+selection_formula: "~ x1 + x2"
+target_formula: "~ y"
+
+n_pop: [10000]
+n_nonprob: [500]
+n_prob: [500]
+method_selection: [logit]
+var_method: [analytic]
+
+n_reps: 50
+alpha: [0.05, 0.10]
+seed: 2026

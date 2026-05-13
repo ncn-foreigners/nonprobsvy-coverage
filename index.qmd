@@ -1,0 +1,23 @@
+---
+title: "nonprobsvy Coverage"
+---
+
+## What this is
+
+Empirical evidence that the confidence intervals produced by the [nonprobsvy](https://github.com/ncn-foreigners/nonprobsvy) R package achieve their nominal coverage levels under the data-generating processes from the methods literature. Modeled after [doubleml-coverage](https://docs.doubleml.org/doubleml-coverage/).
+
+Every coverage table on this site is computed automatically by GitHub Actions and updated whenever the package or this repo's simulation code changes.
+
+## How to read the tables
+
+Each row of a coverage table is one parameter cell (one combination of sample sizes, link function, variance method, etc.). The `coverage` column is the proportion of `n_reps` Monte Carlo replicates whose confidence interval contained the true population mean of `y`. Cells are colored:
+
+- <span style="background:#cfeacf;padding:2px 6px;border-radius:3px;">green</span>: empirical coverage is within one Monte Carlo SE of the nominal level.
+- <span style="background:#ffe6b3;padding:2px 6px;border-radius:3px;">amber</span>: within two Monte Carlo SE.
+- <span style="background:#f4c4c4;padding:2px 6px;border-radius:3px;">red</span>: beyond two Monte Carlo SE.
+
+The footer of each table reports the number of replicates and the Monte Carlo SE of the point estimate, so a reader can judge the precision of the coverage estimate itself.
+
+## Status
+
+This is an early-stage spike with one estimator (`IPW` MLE) on a small custom DGP. The full estimator × DGP matrix will be filled in over the coming weeks — see the [plan](https://github.com/ncn-foreigners/nonprobsvy-coverage) for details.

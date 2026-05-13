@@ -1,0 +1,27 @@
+Package: nonprobcover
+Title: Coverage Simulations for the nonprobsvy Package
+Version: 0.0.0.9000
+Authors@R: c(
+    person("Maciej", "Beresewicz", email = "maciej.beresewicz@ue.poznan.pl",
+           role = c("aut", "cre"))
+  )
+Description: Internal helper package for running Monte Carlo coverage
+    simulations of estimators implemented in the nonprobsvy package.
+    Provides a YAML-driven driver, data-generating processes from the
+    methods literature, coverage metrics, and CSV writers used by the
+    coverage-verification website.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports:
+    data.table,
+    nonprobsvy,
+    sampling,
+    survey,
+    yaml
+Suggests:
+    testthat (>= 3.0.0),
+    knitr,
+    Rcpp
+Config/testthat/edition: 3
