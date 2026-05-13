@@ -7,6 +7,10 @@ on:
         description: "git ref of ncn-foreigners/nonprobsvy to install"
         default: "dev"
         required: false
+  schedule:
+    # Weekly rebuild every Sunday 05:00 UTC. Catches regressions in
+    # nonprobsvy@dev even when nobody pushes to this repo.
+    - cron: "0 5 * * 0"
   push:
     branches: [main]
     paths:
