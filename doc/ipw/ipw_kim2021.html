@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>nonprobsvy Coverage</title>
+<title>IPW (MLE) on the Kim et al.&nbsp;(2021) DGP – nonprobsvy Coverage</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,23 +26,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-428bd9602493cdd309990225bd4a24e8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-428bd9602493cdd309990225bd4a24e8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -81,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">nonprobsvy Coverage</span>
     </a>
   </div>
@@ -92,7 +92,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -101,20 +101,20 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-ipw">    
         <li>
-    <a class="dropdown-item" href="./doc/ipw/ipw_mle.html">
+    <a class="dropdown-item" href="../../doc/ipw/ipw_mle.html">
  <span class="dropdown-text">IPW (MLE)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./doc/ipw/ipw_gee.html">
+    <a class="dropdown-item" href="../../doc/ipw/ipw_gee.html">
  <span class="dropdown-text">IPW (GEE)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./doc/ipw/ipw_scad.html">
+    <a class="dropdown-item" href="../../doc/ipw/ipw_scad.html">
  <span class="dropdown-text">IPW (variable selection)</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="./doc/ipw/ipw_kim2021.html">
+    <a class="dropdown-item" href="../../doc/ipw/ipw_kim2021.html">
  <span class="dropdown-text">Kim et al.&nbsp;(2021) DGP</span></a>
   </li>  
     </ul>
@@ -142,18 +142,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-this-is" id="toc-what-this-is" class="nav-link active" data-scroll-target="#what-this-is">What this is</a></li>
-  <li><a href="#how-to-read-the-tables" id="toc-how-to-read-the-tables" class="nav-link" data-scroll-target="#how-to-read-the-tables">How to read the tables</a></li>
-  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
+  <li><a href="#notes" id="toc-notes" class="nav-link active" data-scroll-target="#notes">Notes</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/ncn-foreigners/nonprobsvy-coverage/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ncn-foreigners/nonprobsvy-coverage/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/ncn-foreigners/nonprobsvy-coverage/edit/main/doc/ipw/ipw_kim2021.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ncn-foreigners/nonprobsvy-coverage/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">nonprobsvy Coverage</h1>
+<h1 class="title">IPW (MLE) on the Kim et al.&nbsp;(2021) DGP</h1>
 </div>
 
 
@@ -170,24 +168,126 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="what-this-is" class="level2">
-<h2 class="anchored" data-anchor-id="what-this-is">What this is</h2>
-<p>Empirical evidence that the confidence intervals produced by the <a href="https://github.com/ncn-foreigners/nonprobsvy">nonprobsvy</a> R package achieve their nominal coverage levels under the data-generating processes from the methods literature. Modeled after <a href="https://docs.doubleml.org/doubleml-coverage/">doubleml-coverage</a>.</p>
-<p>Every coverage table on this site is computed automatically by GitHub Actions and updated whenever the package or this repo’s simulation code changes.</p>
-</section>
-<section id="how-to-read-the-tables" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-read-the-tables">How to read the tables</h2>
-<p>Each row of a coverage table is one parameter cell (one combination of sample sizes, link function, variance method, etc.). The <code>coverage</code> column is the proportion of <code>n_reps</code> Monte Carlo replicates whose confidence interval contained the true population mean of <code>y</code>. Cells are colored:</p>
+<p>Inverse probability weighting (MLE) on the data-generating process from Kim, Park, Chen &amp; Wu (2021), <em>JRSSA</em> 184(3). The DGP draws <code>x ~ N(2, 1)</code> and three outcomes constructed so that all three have theoretical population mean 5. The non-probability sample oversamples the lower tail of <code>x</code> (70% from <code>strata == TRUE</code>, 30% from <code>strata == FALSE</code>).</p>
+<p><strong>nonprobsvy version:</strong> <code>0.2.3.9001</code> &nbsp;|&nbsp; <strong>R:</strong> <code>4.6.0</code> &nbsp;|&nbsp; <strong>run:</strong> <code>2026-05-13 20:49:56</code> &nbsp;|&nbsp; <strong>commit:</strong> <code>6992e1b</code></p>
+<table class="table table-sm">
+<thead>
+<tr>
+<th style="text-align:center;">
+alpha
+</th>
+<th style="text-align:center;">
+n_reps
+</th>
+<th style="text-align:center;">
+bias
+</th>
+<th style="text-align:center;">
+rmse
+</th>
+<th style="text-align:center;">
+mc_se
+</th>
+<th style="text-align:center;">
+mean_se
+</th>
+<th style="text-align:center;">
+coverage
+</th>
+<th style="text-align:center;">
+ci_width
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+0.05
+</td>
+<td style="text-align:center;">
+100
+</td>
+<td style="text-align:center;">
+-0.035
+</td>
+<td style="text-align:center;">
+0.099
+</td>
+<td style="text-align:center;">
+0.009
+</td>
+<td style="text-align:center;">
+0.108
+</td>
+<td style="text-align:center;">
+<span style="background:#cfeacf;padding:2px 6px;border-radius:3px;">0.930</span>
+</td>
+<td style="text-align:center;">
+0.424
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+0.05
+</td>
+<td style="text-align:center;">
+100
+</td>
+<td style="text-align:center;">
+-0.009
+</td>
+<td style="text-align:center;">
+0.075
+</td>
+<td style="text-align:center;">
+0.008
+</td>
+<td style="text-align:center;">
+0.084
+</td>
+<td style="text-align:center;">
+<span style="background:#f4c4c4;padding:2px 6px;border-radius:3px;">0.980</span>
+</td>
+<td style="text-align:center;">
+0.330
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+0.05
+</td>
+<td style="text-align:center;">
+100
+</td>
+<td style="text-align:center;">
+-0.036
+</td>
+<td style="text-align:center;">
+0.114
+</td>
+<td style="text-align:center;">
+0.011
+</td>
+<td style="text-align:center;">
+0.125
+</td>
+<td style="text-align:center;">
+<span style="background:#cfeacf;padding:2px 6px;border-radius:3px;">0.950</span>
+</td>
+<td style="text-align:center;">
+0.492
+</td>
+</tr>
+</tbody>
+</table>
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">Notes</h2>
 <ul>
-<li><span style="background:#cfeacf;padding:2px 6px;border-radius:3px;">green</span>: empirical coverage is within one Monte Carlo SE of the nominal level.</li>
-<li><span style="background:#ffe6b3;padding:2px 6px;border-radius:3px;">amber</span>: within two Monte Carlo SE.</li>
-<li><span style="background:#f4c4c4;padding:2px 6px;border-radius:3px;">red</span>: beyond two Monte Carlo SE.</li>
+<li><code>y1 = 1 + 2 x + e</code> is linear in <code>x</code> — the propensity model is correctly specified for this outcome.</li>
+<li><code>y2 = 3 + x + 2 e</code> is also linear in <code>x</code> but with a different scale.</li>
+<li><code>y3 = 2.5 + 0.5 x^2 + e</code> is non-linear in <code>x</code>. The propensity adjustment still corrects the design bias, but residual coverage behaviour can differ — see the rows.</li>
 </ul>
-<p>The footer of each table reports the number of replicates and the Monte Carlo SE of the point estimate, so a reader can judge the precision of the coverage estimate itself.</p>
-</section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>This is an early-stage spike with one estimator (<code>IPW</code> MLE) on a small custom DGP. The full estimator × DGP matrix will be filled in over the coming weeks — see the <a href="https://github.com/ncn-foreigners/nonprobsvy-coverage">plan</a> for details.</p>
+<p>Source: <a href="https://github.com/ncn-foreigners/software-tutorials/blob/main/codes/2021-kim-et-al-jrssa.R"><code>ncn-foreigners/software-tutorials/codes/2021-kim-et-al-jrssa.R</code></a>.</p>
 
 
 </section>
@@ -601,7 +701,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ncn-foreigners/nonprobsvy-coverage/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ncn-foreigners/nonprobsvy-coverage/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ncn-foreigners/nonprobsvy-coverage/edit/main/doc/ipw/ipw_kim2021.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ncn-foreigners/nonprobsvy-coverage/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>NCN OPUS 20 grant no. 2020/39/B/HS4/00941</p>
 </div>
