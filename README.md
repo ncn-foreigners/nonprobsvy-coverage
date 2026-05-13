@@ -45,6 +45,10 @@ Next milestones (see `plan` in commit history):
 - CSV schema is one row per parameter cell × `alpha`; full schema documented in [`R/compute_metrics.R`](R/compute_metrics.R).
 - Coverage cells in the rendered tables are colored green/amber/red against the Monte Carlo SE of the coverage estimate (see [`R/flag_coverage.R`](R/flag_coverage.R)).
 
+## Acknowledgements
+
+This repository is **inspired by** [DoubleML/doubleml-coverage](https://github.com/DoubleML/doubleml-coverage) ([live site](https://docs.doubleml.org/doubleml-coverage/)), which provides the same kind of automated coverage evidence for the [DoubleML](https://docs.doubleml.org/) Python and R packages. We mirror its overall architecture (YAML-driven sim scripts → CSV results → Quarto website → GitHub Actions), adapted to R and to the estimators implemented in `nonprobsvy`.
+
 ## Funding
 
 This work is supported by the National Science Centre, Poland, OPUS 20 grant no. 2020/39/B/HS4/00941.
