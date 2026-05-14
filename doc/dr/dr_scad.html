@@ -212,6 +212,9 @@ ul.task-list li input[type="checkbox"] {
 <thead>
 <tr>
 <th style="text-align:center;">
+penalty
+</th>
+<th style="text-align:center;">
 alpha
 </th>
 <th style="text-align:center;">
@@ -237,6 +240,9 @@ ci_width
 <tbody>
 <tr>
 <td style="text-align:center;">
+SCAD
+</td>
+<td style="text-align:center;">
 0.05
 </td>
 <td style="text-align:center;">
@@ -260,6 +266,9 @@ ci_width
 </tr>
 <tr>
 <td style="text-align:center;">
+lasso
+</td>
+<td style="text-align:center;">
 0.05
 </td>
 <td style="text-align:center;">
@@ -282,6 +291,9 @@ ci_width
 </td>
 </tr>
 <tr>
+<td style="text-align:center;">
+MCP
+</td>
 <td style="text-align:center;">
 0.05
 </td>
@@ -311,7 +323,7 @@ ci_width
 <ul>
 <li>DGP: <code>default</code> with <code>~ x1 + x2 + x3</code> on both selection and outcome.</li>
 <li>Like <code>dr_glm</code>, the analytical SE here is conservative — over-coverage at the 5% level is the expected pattern. Coverage typically settles closer to nominal under bootstrap.</li>
-<li><code>n_reps</code> is reduced to 30 because both penalised models run cross-validation inside each replicate.</li>
+<li>Both penalised models run cross-validation inside each replicate, which makes this script slower per replicate than the unpenalised DR variant.</li>
 </ul>
 
 

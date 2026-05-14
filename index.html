@@ -181,8 +181,12 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#what-this-is" id="toc-what-this-is" class="nav-link active" data-scroll-target="#what-this-is">What this is</a></li>
-  <li><a href="#how-to-read-the-tables" id="toc-how-to-read-the-tables" class="nav-link" data-scroll-target="#how-to-read-the-tables">How to read the tables</a></li>
-  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
+  <li><a href="#how-to-read-the-tables" id="toc-how-to-read-the-tables" class="nav-link" data-scroll-target="#how-to-read-the-tables">How to read the tables</a>
+  <ul class="collapse">
+  <li><a href="#what-the-numbers-mean" id="toc-what-the-numbers-mean" class="nav-link" data-scroll-target="#what-the-numbers-mean">What the numbers mean</a></li>
+  <li><a href="#what-the-cell-colors-mean" id="toc-what-the-cell-colors-mean" class="nav-link" data-scroll-target="#what-the-cell-colors-mean">What the cell colors mean</a></li>
+  <li><a href="#header" id="toc-header" class="nav-link" data-scroll-target="#header">Header</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/ncn-foreigners/nonprobsvy-coverage/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ncn-foreigners/nonprobsvy-coverage/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -215,19 +219,41 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="how-to-read-the-tables" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-read-the-tables">How to read the tables</h2>
-<p>Each row of a coverage table is one parameter cell (one combination of sample sizes, link function, variance method, etc.). The <code>coverage</code> column is the proportion of <code>n_reps</code> Monte Carlo replicates whose confidence interval contained the true population mean of <code>y</code>. Cells are colored:</p>
+<p>Each row is <strong>one parameter cell</strong> — one combination of sample sizes, link function, penalty, variance method, etc. The columns that vary across rows (e.g.&nbsp;<code>penalty</code> for SCAD/lasso/MCP, <code>k</code> for nearest-neighbour, <code>var_method</code> for analytic vs bootstrap) are shown on the left of the table; columns that are constant across the whole table are hidden.</p>
+<section id="what-the-numbers-mean" class="level3">
+<h3 class="anchored" data-anchor-id="what-the-numbers-mean">What the numbers mean</h3>
 <ul>
-<li><span style="background:#cfeacf;padding:2px 6px;border-radius:3px;">green</span>: empirical coverage is within one Monte Carlo SE of the nominal level.</li>
-<li><span style="background:#ffe6b3;padding:2px 6px;border-radius:3px;">amber</span>: within two Monte Carlo SE.</li>
-<li><span style="background:#f4c4c4;padding:2px 6px;border-radius:3px;">red</span>: beyond two Monte Carlo SE.</li>
+<li><code>n_reps</code> — how many Monte Carlo replicates produced this row.</li>
+<li><code>bias</code> — mean of <code>point estimate − true population mean</code>. Closer to zero is better.</li>
+<li><code>rmse</code> — root mean squared error of the point estimate.</li>
+<li><code>mc_se</code> — Monte Carlo standard error of the point estimate itself (≈ <code>sd(point) / sqrt(n_reps)</code>). Captures how precisely <em>the simulation</em> pins down the bias and coverage values.</li>
+<li><code>mean_se</code> — mean of the estimator’s reported standard error across replicates. The estimator is well-calibrated when <code>mean_se</code> ≈ <code>mc_se × sqrt(n_reps)</code> (the empirical sd of the point estimates).</li>
+<li><code>coverage</code> — proportion of replicates whose confidence interval contained the true population mean. <strong>This is the headline.</strong></li>
+<li><code>ci_width</code> — mean width of the confidence interval.</li>
 </ul>
-<p>The footer of each table reports the number of replicates and the Monte Carlo SE of the point estimate, so a reader can judge the precision of the coverage estimate itself.</p>
 </section>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>This is an early-stage spike with one estimator (<code>IPW</code> MLE) on a small custom DGP. The full estimator × DGP matrix will be filled in over the coming weeks — see the <a href="https://github.com/ncn-foreigners/nonprobsvy-coverage">plan</a> for details.</p>
+<section id="what-the-cell-colors-mean" class="level3">
+<h3 class="anchored" data-anchor-id="what-the-cell-colors-mean">What the cell colors mean</h3>
+<p>A coverage estimate from <code>n_reps</code> simulations isn’t infinitely precise — it has its own Monte Carlo SE of <code>sqrt(p(1-p) / n_reps)</code> (about <strong>0.010</strong> at <code>p = 0.95</code> with <code>n_reps = 500</code>). The color compares the <em>gap</em> between empirical and nominal coverage to that Monte Carlo SE:</p>
+<ul>
+<li><span style="background:#cfeacf;padding:2px 6px;border-radius:3px;"><strong>green</strong></span> — the gap is within <strong>1 × MC SE</strong>. The estimator looks correctly calibrated; any residual gap is consistent with simulation noise.</li>
+<li><span style="background:#ffe6b3;padding:2px 6px;border-radius:3px;"><strong>amber</strong></span> — gap is between <strong>1 and 2 × MC SE</strong>. Borderline; could plausibly be either real miscalibration or sampling noise. Worth re-running with more replicates to disambiguate.</li>
+<li><span style="background:#f4c4c4;padding:2px 6px;border-radius:3px;"><strong>red</strong></span> — gap is <strong>more than 2 × MC SE</strong>. Almost certainly real miscalibration, not simulation noise. Under-coverage (red and low) means the CI is too narrow; over-coverage (red and high, e.g.&nbsp;1.000) means the CI is too wide / conservative.</li>
+</ul>
+<p>Concrete examples: at <code>n_reps = 500</code> and α = 0.05 (nominal coverage 0.95, MC SE ≈ 0.010):</p>
+<ul>
+<li>0.945 → green (gap 0.005, within 1 MC SE)</li>
+<li>0.930 → amber (gap 0.020, between 1 and 2 MC SE)</li>
+<li>0.890 → red (gap 0.060, beyond 2 MC SE → CI too narrow)</li>
+<li>1.000 → red (gap 0.050, beyond 2 MC SE → CI too wide)</li>
+</ul>
+</section>
+<section id="header" class="level3">
+<h3 class="anchored" data-anchor-id="header">Header</h3>
+<p>The header above each table shows the version of <code>nonprobsvy</code> that produced the numbers, the R version, the wall-clock run time and the git commit — full provenance for every cell.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

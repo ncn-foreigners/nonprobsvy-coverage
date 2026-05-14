@@ -207,10 +207,19 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>Inverse probability weighting where the propensity score parameters solve a generalised estimating equation (calibration-style constraints) rather than the maximum-likelihood score. Both smoothing variants from the literature are shown — <code>gee_h_fun = 1</code> (logarithmic) and <code>gee_h_fun = 2</code> (exponential).</p>
-<p><strong>nonprobsvy version:</strong> <code>0.2.3.9001</code> &nbsp;|&nbsp; <strong>R:</strong> <code>4.6.0</code> &nbsp;|&nbsp; <strong>run:</strong> <code>2026-05-14 07:20:07</code> &nbsp;|&nbsp; <strong>commit:</strong> <code>85ca7cd</code></p>
+<p><strong>nonprobsvy version:</strong> <code>0.2.3.9001</code> &nbsp;|&nbsp; <strong>R:</strong> <code>4.4.2</code> &nbsp;|&nbsp; <strong>run:</strong> <code>2026-05-14 07:27:39</code> &nbsp;|&nbsp; <strong>commit:</strong> <code>85ca7cd</code></p>
 <table class="table table-sm">
 <thead>
 <tr>
+<th style="text-align:center;">
+gee_h_fun
+</th>
+<th style="text-align:center;">
+var_method
+</th>
+<th style="text-align:center;">
+num_boot
+</th>
 <th style="text-align:center;">
 alpha
 </th>
@@ -237,6 +246,15 @@ ci_width
 <tbody>
 <tr>
 <td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+analytic
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
 0.05
 </td>
 <td style="text-align:center;">
@@ -249,16 +267,25 @@ ci_width
 0.085
 </td>
 <td style="text-align:center;">
-0.078
+0.149
 </td>
 <td style="text-align:center;">
-<span style="background:#f4c4c4;padding:2px 6px;border-radius:3px;">0.920</span>
+<span style="background:#f4c4c4;padding:2px 6px;border-radius:3px;">1.000</span>
 </td>
 <td style="text-align:center;">
-0.307
+0.586
 </td>
 </tr>
 <tr>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+analytic
+</td>
+<td style="text-align:center;">
+NA
+</td>
 <td style="text-align:center;">
 0.10
 </td>
@@ -272,16 +299,89 @@ ci_width
 0.085
 </td>
 <td style="text-align:center;">
-0.078
+0.149
+</td>
+<td style="text-align:center;">
+<span style="background:#f4c4c4;padding:2px 6px;border-radius:3px;">0.998</span>
+</td>
+<td style="text-align:center;">
+0.492
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+bootstrap
+</td>
+<td style="text-align:center;">
+200
+</td>
+<td style="text-align:center;">
+0.05
+</td>
+<td style="text-align:center;">
+500
+</td>
+<td style="text-align:center;">
+0.008
+</td>
+<td style="text-align:center;">
+0.085
+</td>
+<td style="text-align:center;">
+0.080
+</td>
+<td style="text-align:center;">
+<span style="background:#ffe6b3;padding:2px 6px;border-radius:3px;">0.928</span>
+</td>
+<td style="text-align:center;">
+0.312
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+bootstrap
+</td>
+<td style="text-align:center;">
+200
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+500
+</td>
+<td style="text-align:center;">
+0.008
+</td>
+<td style="text-align:center;">
+0.085
+</td>
+<td style="text-align:center;">
+0.080
 </td>
 <td style="text-align:center;">
 <span style="background:#ffe6b3;padding:2px 6px;border-radius:3px;">0.872</span>
 </td>
 <td style="text-align:center;">
-0.258
+0.262
 </td>
 </tr>
 <tr>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+analytic
+</td>
+<td style="text-align:center;">
+NA
+</td>
 <td style="text-align:center;">
 0.05
 </td>
@@ -295,16 +395,25 @@ ci_width
 0.099
 </td>
 <td style="text-align:center;">
-0.099
+0.129
 </td>
 <td style="text-align:center;">
-<span style="background:#cfeacf;padding:2px 6px;border-radius:3px;">0.946</span>
+<span style="background:#f4c4c4;padding:2px 6px;border-radius:3px;">0.990</span>
 </td>
 <td style="text-align:center;">
-0.386
+0.506
 </td>
 </tr>
 <tr>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+analytic
+</td>
+<td style="text-align:center;">
+NA
+</td>
 <td style="text-align:center;">
 0.10
 </td>
@@ -318,13 +427,77 @@ ci_width
 0.099
 </td>
 <td style="text-align:center;">
+0.129
+</td>
+<td style="text-align:center;">
+<span style="background:#f4c4c4;padding:2px 6px;border-radius:3px;">0.966</span>
+</td>
+<td style="text-align:center;">
+0.424
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+bootstrap
+</td>
+<td style="text-align:center;">
+200
+</td>
+<td style="text-align:center;">
+0.05
+</td>
+<td style="text-align:center;">
+500
+</td>
+<td style="text-align:center;">
+0.010
+</td>
+<td style="text-align:center;">
 0.099
 </td>
 <td style="text-align:center;">
-<span style="background:#cfeacf;padding:2px 6px;border-radius:3px;">0.904</span>
+0.104
 </td>
 <td style="text-align:center;">
-0.324
+<span style="background:#cfeacf;padding:2px 6px;border-radius:3px;">0.956</span>
+</td>
+<td style="text-align:center;">
+0.409
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+bootstrap
+</td>
+<td style="text-align:center;">
+200
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+500
+</td>
+<td style="text-align:center;">
+0.010
+</td>
+<td style="text-align:center;">
+0.099
+</td>
+<td style="text-align:center;">
+0.104
+</td>
+<td style="text-align:center;">
+<span style="background:#ffe6b3;padding:2px 6px;border-radius:3px;">0.916</span>
+</td>
+<td style="text-align:center;">
+0.343
 </td>
 </tr>
 </tbody>

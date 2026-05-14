@@ -212,6 +212,9 @@ ul.task-list li input[type="checkbox"] {
 <thead>
 <tr>
 <th style="text-align:center;">
+penalty
+</th>
+<th style="text-align:center;">
 alpha
 </th>
 <th style="text-align:center;">
@@ -237,6 +240,9 @@ ci_width
 <tbody>
 <tr>
 <td style="text-align:center;">
+SCAD
+</td>
+<td style="text-align:center;">
 0.05
 </td>
 <td style="text-align:center;">
@@ -260,6 +266,9 @@ ci_width
 </tr>
 <tr>
 <td style="text-align:center;">
+lasso
+</td>
+<td style="text-align:center;">
 0.05
 </td>
 <td style="text-align:center;">
@@ -282,6 +291,9 @@ ci_width
 </td>
 </tr>
 <tr>
+<td style="text-align:center;">
+MCP
+</td>
 <td style="text-align:center;">
 0.05
 </td>
@@ -310,7 +322,7 @@ ci_width
 <h2 class="anchored" data-anchor-id="notes">Notes</h2>
 <ul>
 <li>DGP: <code>default</code> with selection formula <code>~ x1 + x2 + x3</code>. True selection uses only <code>x1</code> and <code>x2</code>, so <code>x3</code> is the noise variable.</li>
-<li><code>n_reps</code> is intentionally smaller here (30) because each replicate runs cross-validation inside <code>control_sel(penalty = ...)</code>. MC SE is correspondingly larger — read the table accordingly.</li>
+<li>Each replicate runs cross-validation inside <code>control_sel(penalty = ...)</code>, which makes this script slower per replicate than the unpenalised IPW variants.</li>
 <li>Coverage differences across SCAD, lasso, and MCP largely come from how aggressively each penalty zeros out the noise coefficient.</li>
 </ul>
 
