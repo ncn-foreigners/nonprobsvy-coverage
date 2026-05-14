@@ -1,0 +1,20 @@
+---
+title: "MI (predictive mean matching)"
+---
+
+```{r setup}
+#| include: false
+source("../_helpers.R")
+```
+
+Mass imputation by predictive mean matching: a regression `y ~ x1 + x2` is fit on the non-probability sample, donors are chosen by closeness in either predicted-`y` (`pmm_match_type = 1`) or observed-`y` (`pmm_match_type = 2`) space, and the donor outcomes are aggregated over the probability sample.
+
+```{r table, results = "asis"}
+render_coverage_page("mi", "mi_pmm")
+```
+
+## Notes
+
+- DGP: `default`.
+- Analytical SE typically under-states the variance for PMM for the same reason as NN imputation — donor selection variability is unmodelled.
+- Sweeps `pmm_match_type ∈ {1, 2}` at `k = 5`.

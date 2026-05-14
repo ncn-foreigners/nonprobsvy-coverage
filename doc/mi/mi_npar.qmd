@@ -1,0 +1,19 @@
+---
+title: "MI (nonparametric / loess)"
+---
+
+```{r setup}
+#| include: false
+source("../_helpers.R")
+```
+
+Mass imputation with a nonparametric (loess) outcome model. Only a small number of covariates is supported by `nonprobsvy`; here we fit `y ~ x1 + x2`.
+
+```{r table, results = "asis"}
+render_coverage_page("mi", "mi_npar")
+```
+
+## Notes
+
+- DGP: `default`.
+- Analytical SE for loess-based MI uses an asymptotic linearisation that, like the NN/PMM variants, doesn't fully account for smoothing-window variability. Bootstrap is the safer choice for honest inference.

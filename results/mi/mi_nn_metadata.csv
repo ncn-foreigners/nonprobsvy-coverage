@@ -1,0 +1,2 @@
+script,estimator,dgp,n_cells,total_runtime_sec,workers,nonprobsvy_version,r_version,platform,commit_sha,run_date
+mi_nn,mi,default,2,12.5910859107971,2,0.2.3.9001,4.4.2,aarch64-apple-darwin20,382c130,2026-05-13T21:02:10Z

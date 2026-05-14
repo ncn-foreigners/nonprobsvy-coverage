@@ -1,0 +1,20 @@
+script: mi_pmm
+estimator: mi
+dgp: default
+
+outcome_rhs: "x1 + x2"
+
+n_pop: [10000]
+n_nonprob: [500]
+n_prob: [500]
+target_var: ["y"]
+method_outcome: [pmm]
+family_outcome: [gaussian]
+k: [5]
+pmm_match_type: [1, 2]
+pmm_weights: [none]
+var_method: [analytic]
+
+n_reps: 50
+alpha: [0.05]
+seed: 2026

@@ -1,0 +1,20 @@
+---
+title: "MI (GLM)"
+---
+
+```{r setup}
+#| include: false
+source("../_helpers.R")
+```
+
+Mass imputation with a GLM outcome model. The non-probability sample fits `y ~ x1 + x2` and the predictions are aggregated over the probability sample.
+
+```{r table, results = "asis"}
+render_coverage_page("mi", "mi_glm")
+```
+
+## Notes
+
+- DGP: `default` (linear outcome, `y = 1 + x1 + 0.5 x2 - 0.3 x3 + N(0,1)`).
+- The outcome model is correctly specified for this DGP.
+- Analytical SE for GLM-based MI uses the standard linearisation argument and should yield well-calibrated CIs at the nominal level.

@@ -1,0 +1,20 @@
+---
+title: "MI (nearest neighbour)"
+---
+
+```{r setup}
+#| include: false
+source("../_helpers.R")
+```
+
+Mass imputation where the non-probability sample serves as the donor pool for `k`-nearest-neighbour imputation onto the probability sample.
+
+```{r table, results = "asis"}
+render_coverage_page("mi", "mi_nn")
+```
+
+## Notes
+
+- DGP: `default`.
+- The analytical SE for NN-imputation does **not** account for the additional variability introduced by the donor selection step. Expect under-coverage; bootstrap variance is the recommended remedy.
+- Sweeps `k = 1` and `k = 5`.

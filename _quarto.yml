@@ -23,6 +23,16 @@ website:
           - text: "---"
           - text: Kim et al. (2021) DGP
             href: doc/ipw/ipw_kim2021.qmd
+      - text: MI
+        menu:
+          - text: MI (GLM)
+            href: doc/mi/mi_glm.qmd
+          - text: MI (nearest neighbour)
+            href: doc/mi/mi_nn.qmd
+          - text: MI (predictive mean matching)
+            href: doc/mi/mi_pmm.qmd
+          - text: MI (nonparametric / loess)
+            href: doc/mi/mi_npar.qmd
     right:
       - icon: github
         href: https://github.com/ncn-foreigners/nonprobsvy-coverage
