@@ -17,4 +17,4 @@ render_coverage_page("dr", "dr_scad")
 
 - DGP: `default` with `~ x1 + x2 + x3` on both selection and outcome.
 - Like `dr_glm`, the analytical SE here is conservative — over-coverage at the 5% level is the expected pattern. Coverage typically settles closer to nominal under bootstrap.
-- `n_reps` is reduced to 30 because both penalised models run cross-validation inside each replicate.
+- Both penalised models run cross-validation inside each replicate, which makes this script slower per replicate than the unpenalised DR variant.

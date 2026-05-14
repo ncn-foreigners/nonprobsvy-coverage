@@ -25,9 +25,10 @@ permissions:
   contents: write
   pages: write
 
-concurrency:
-  group: pages
-  cancel-in-progress: false
+# No workflow-level concurrency on purpose: the three *_sim.yml workflows
+# write to disjoint results/<family>/ folders and their sim matrices are
+# independent, so they can run in parallel. Only the final
+# commit_and_deploy job is gated below.
 
 jobs:
   test:
@@ -86,6 +87,9 @@ jobs:
     needs: sim
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    concurrency:
+      group: pages-deploy
+      cancel-in-progress: false
     steps:
       - uses: actions/checkout@v4
 

@@ -21,7 +21,7 @@ permissions:
   pages: write
 
 concurrency:
-  group: pages
+  group: pages-deploy        # shared with each *_sim.yml's deploy job
   cancel-in-progress: false
 
 jobs:

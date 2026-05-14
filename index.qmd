@@ -10,14 +10,33 @@ Every coverage table on this site is computed automatically by GitHub Actions an
 
 ## How to read the tables
 
-Each row of a coverage table is one parameter cell (one combination of sample sizes, link function, variance method, etc.). The `coverage` column is the proportion of `n_reps` Monte Carlo replicates whose confidence interval contained the true population mean of `y`. Cells are colored:
+Each row is **one parameter cell** — one combination of sample sizes, link function, penalty, variance method, etc. The columns that vary across rows (e.g. `penalty` for SCAD/lasso/MCP, `k` for nearest-neighbour, `var_method` for analytic vs bootstrap) are shown on the left of the table; columns that are constant across the whole table are hidden.
 
-- <span style="background:#cfeacf;padding:2px 6px;border-radius:3px;">green</span>: empirical coverage is within one Monte Carlo SE of the nominal level.
-- <span style="background:#ffe6b3;padding:2px 6px;border-radius:3px;">amber</span>: within two Monte Carlo SE.
-- <span style="background:#f4c4c4;padding:2px 6px;border-radius:3px;">red</span>: beyond two Monte Carlo SE.
+### What the numbers mean
 
-The footer of each table reports the number of replicates and the Monte Carlo SE of the point estimate, so a reader can judge the precision of the coverage estimate itself.
+- `n_reps` — how many Monte Carlo replicates produced this row.
+- `bias` — mean of `point estimate − true population mean`. Closer to zero is better.
+- `rmse` — root mean squared error of the point estimate.
+- `mc_se` — Monte Carlo standard error of the point estimate itself (≈ `sd(point) / sqrt(n_reps)`). Captures how precisely *the simulation* pins down the bias and coverage values.
+- `mean_se` — mean of the estimator's reported standard error across replicates. The estimator is well-calibrated when `mean_se` ≈ `mc_se × sqrt(n_reps)` (the empirical sd of the point estimates).
+- `coverage` — proportion of replicates whose confidence interval contained the true population mean. **This is the headline.**
+- `ci_width` — mean width of the confidence interval.
 
-## Status
+### What the cell colors mean
 
-This is an early-stage spike with one estimator (`IPW` MLE) on a small custom DGP. The full estimator × DGP matrix will be filled in over the coming weeks — see the [plan](https://github.com/ncn-foreigners/nonprobsvy-coverage) for details.
+A coverage estimate from `n_reps` simulations isn't infinitely precise — it has its own Monte Carlo SE of `sqrt(p(1-p) / n_reps)` (about **0.010** at `p = 0.95` with `n_reps = 500`). The color compares the *gap* between empirical and nominal coverage to that Monte Carlo SE:
+
+- <span style="background:#cfeacf;padding:2px 6px;border-radius:3px;">**green**</span> — the gap is within **1 × MC SE**. The estimator looks correctly calibrated; any residual gap is consistent with simulation noise.
+- <span style="background:#ffe6b3;padding:2px 6px;border-radius:3px;">**amber**</span> — gap is between **1 and 2 × MC SE**. Borderline; could plausibly be either real miscalibration or sampling noise. Worth re-running with more replicates to disambiguate.
+- <span style="background:#f4c4c4;padding:2px 6px;border-radius:3px;">**red**</span> — gap is **more than 2 × MC SE**. Almost certainly real miscalibration, not simulation noise. Under-coverage (red and low) means the CI is too narrow; over-coverage (red and high, e.g. 1.000) means the CI is too wide / conservative.
+
+Concrete examples: at `n_reps = 500` and α = 0.05 (nominal coverage 0.95, MC SE ≈ 0.010):
+
+- 0.945 → green (gap 0.005, within 1 MC SE)
+- 0.930 → amber (gap 0.020, between 1 and 2 MC SE)
+- 0.890 → red (gap 0.060, beyond 2 MC SE → CI too narrow)
+- 1.000 → red (gap 0.050, beyond 2 MC SE → CI too wide)
+
+### Header
+
+The header above each table shows the version of `nonprobsvy` that produced the numbers, the R version, the wall-clock run time and the git commit — full provenance for every cell.
