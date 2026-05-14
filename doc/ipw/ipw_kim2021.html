@@ -207,12 +207,18 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>Inverse probability weighting (MLE) on the data-generating process from Kim, Park, Chen &amp; Wu (2021), <em>JRSSA</em> 184(3). The DGP draws <code>x ~ N(2, 1)</code> and three outcomes constructed so that all three have theoretical population mean 5. The non-probability sample oversamples the lower tail of <code>x</code> (70% from <code>strata == TRUE</code>, 30% from <code>strata == FALSE</code>).</p>
-<p><strong>nonprobsvy version:</strong> <code>0.2.3.9001</code> &nbsp;|&nbsp; <strong>R:</strong> <code>4.6.0</code> &nbsp;|&nbsp; <strong>run:</strong> <code>2026-05-14 07:51:10</code> &nbsp;|&nbsp; <strong>commit:</strong> <code>2d7b79a</code></p>
+<p><strong>nonprobsvy version:</strong> <code>0.2.3.9001</code> &nbsp;|&nbsp; <strong>R:</strong> <code>4.4.2</code> &nbsp;|&nbsp; <strong>run:</strong> <code>2026-05-14 07:53:09</code> &nbsp;|&nbsp; <strong>commit:</strong> <code>2d7b79a</code></p>
 <table class="table table-sm">
 <thead>
 <tr>
 <th style="text-align:center;">
 target_var
+</th>
+<th style="text-align:center;">
+var_method
+</th>
+<th style="text-align:center;">
+num_boot
 </th>
 <th style="text-align:center;">
 alpha
@@ -246,6 +252,12 @@ ci_width
 y1
 </td>
 <td style="text-align:center;">
+analytic
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
 0.05
 </td>
 <td style="text-align:center;">
@@ -261,18 +273,59 @@ y1
 0.005
 </td>
 <td style="text-align:center;">
-0.110
+0.148
 </td>
 <td style="text-align:center;">
-<span style="background:#cfeacf;padding:2px 6px;border-radius:3px;">0.956</span>
+<span style="background:#f4c4c4;padding:2px 6px;border-radius:3px;">0.988</span>
 </td>
 <td style="text-align:center;">
-0.432
+0.579
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+y1
+</td>
+<td style="text-align:center;">
+bootstrap
+</td>
+<td style="text-align:center;">
+200
+</td>
+<td style="text-align:center;">
+0.05
+</td>
+<td style="text-align:center;">
+500
+</td>
+<td style="text-align:center;">
+-0.026
+</td>
+<td style="text-align:center;">
+0.105
+</td>
+<td style="text-align:center;">
+0.005
+</td>
+<td style="text-align:center;">
+0.112
+</td>
+<td style="text-align:center;">
+<span style="background:#cfeacf;padding:2px 6px;border-radius:3px;">0.952</span>
+</td>
+<td style="text-align:center;">
+0.440
 </td>
 </tr>
 <tr>
 <td style="text-align:center;">
 y2
+</td>
+<td style="text-align:center;">
+analytic
+</td>
+<td style="text-align:center;">
+NA
 </td>
 <td style="text-align:center;">
 0.05
@@ -290,18 +343,59 @@ y2
 0.004
 </td>
 <td style="text-align:center;">
-0.084
+0.074
 </td>
 <td style="text-align:center;">
-<span style="background:#cfeacf;padding:2px 6px;border-radius:3px;">0.952</span>
+<span style="background:#f4c4c4;padding:2px 6px;border-radius:3px;">0.924</span>
 </td>
 <td style="text-align:center;">
-0.331
+0.289
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+y2
+</td>
+<td style="text-align:center;">
+bootstrap
+</td>
+<td style="text-align:center;">
+200
+</td>
+<td style="text-align:center;">
+0.05
+</td>
+<td style="text-align:center;">
+500
+</td>
+<td style="text-align:center;">
+-0.012
+</td>
+<td style="text-align:center;">
+0.081
+</td>
+<td style="text-align:center;">
+0.004
+</td>
+<td style="text-align:center;">
+0.086
+</td>
+<td style="text-align:center;">
+<span style="background:#cfeacf;padding:2px 6px;border-radius:3px;">0.958</span>
+</td>
+<td style="text-align:center;">
+0.336
 </td>
 </tr>
 <tr>
 <td style="text-align:center;">
 y3
+</td>
+<td style="text-align:center;">
+analytic
+</td>
+<td style="text-align:center;">
+NA
 </td>
 <td style="text-align:center;">
 0.05
@@ -319,13 +413,48 @@ y3
 0.005
 </td>
 <td style="text-align:center;">
-0.129
+0.160
 </td>
 <td style="text-align:center;">
-<span style="background:#cfeacf;padding:2px 6px;border-radius:3px;">0.948</span>
+<span style="background:#f4c4c4;padding:2px 6px;border-radius:3px;">0.982</span>
 </td>
 <td style="text-align:center;">
-0.506
+0.628
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+y3
+</td>
+<td style="text-align:center;">
+bootstrap
+</td>
+<td style="text-align:center;">
+200
+</td>
+<td style="text-align:center;">
+0.05
+</td>
+<td style="text-align:center;">
+500
+</td>
+<td style="text-align:center;">
+-0.025
+</td>
+<td style="text-align:center;">
+0.125
+</td>
+<td style="text-align:center;">
+0.005
+</td>
+<td style="text-align:center;">
+0.132
+</td>
+<td style="text-align:center;">
+<span style="background:#cfeacf;padding:2px 6px;border-radius:3px;">0.952</span>
+</td>
+<td style="text-align:center;">
+0.517
 </td>
 </tr>
 </tbody>

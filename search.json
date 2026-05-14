@@ -32,7 +32,7 @@
     "href": "doc/mi/mi_glm.html",
     "title": "MI (GLM)",
     "section": "",
-    "text": "Mass imputation with a GLM outcome model. The non-probability sample fits y ~ x1 + x2 and the predictions are aggregated over the probability sample.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 07:55:27  |  commit: 2d7b79a"
+    "text": "Mass imputation with a GLM outcome model. The non-probability sample fits y ~ x1 + x2 and the predictions are aggregated over the probability sample.\nnonprobsvy version: 0.2.3.9001  |  R: 4.4.2  |  run: 2026-05-14 08:01:50  |  commit: 2d7b79a"
   },
   {
     "objectID": "doc/mi/mi_glm.html#notes",
@@ -95,7 +95,7 @@
     "href": "doc/ipw/ipw_kim2021.html",
     "title": "IPW (MLE) on the Kim et al. (2021) DGP",
     "section": "",
-    "text": "Inverse probability weighting (MLE) on the data-generating process from Kim, Park, Chen & Wu (2021), JRSSA 184(3). The DGP draws x ~ N(2, 1) and three outcomes constructed so that all three have theoretical population mean 5. The non-probability sample oversamples the lower tail of x (70% from strata == TRUE, 30% from strata == FALSE).\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 07:51:10  |  commit: 2d7b79a"
+    "text": "Inverse probability weighting (MLE) on the data-generating process from Kim, Park, Chen & Wu (2021), JRSSA 184(3). The DGP draws x ~ N(2, 1) and three outcomes constructed so that all three have theoretical population mean 5. The non-probability sample oversamples the lower tail of x (70% from strata == TRUE, 30% from strata == FALSE).\nnonprobsvy version: 0.2.3.9001  |  R: 4.4.2  |  run: 2026-05-14 07:53:09  |  commit: 2d7b79a"
   },
   {
     "objectID": "doc/ipw/ipw_kim2021.html#notes",
@@ -151,7 +151,7 @@
     "href": "doc/dr/dr_glm.html",
     "title": "DR (GLM outcome)",
     "section": "",
-    "text": "Doubly-robust estimator combining a logistic propensity score with a GLM outcome model. Both nuisance models are fit on x1 and x2.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 07:49:19  |  commit: 2d7b79a"
+    "text": "Doubly-robust estimator combining a logistic propensity score with a GLM outcome model. Both nuisance models are fit on x1 and x2.\nnonprobsvy version: 0.2.3.9001  |  R: 4.4.2  |  run: 2026-05-14 08:14:58  |  commit: 2d7b79a"
   },
   {
     "objectID": "doc/dr/dr_glm.html#notes",

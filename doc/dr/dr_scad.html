@@ -212,7 +212,19 @@ ul.task-list li input[type="checkbox"] {
 <thead>
 <tr>
 <th style="text-align:center;">
+script
+</th>
+<th style="text-align:center;">
 penalty
+</th>
+<th style="text-align:center;">
+var_method
+</th>
+<th style="text-align:center;">
+rep_type
+</th>
+<th style="text-align:center;">
+num_boot
 </th>
 <th style="text-align:center;">
 alpha
@@ -225,6 +237,9 @@ bias
 </th>
 <th style="text-align:center;">
 rmse
+</th>
+<th style="text-align:center;">
+mc_se
 </th>
 <th style="text-align:center;">
 mean_se
@@ -240,7 +255,19 @@ ci_width
 <tbody>
 <tr>
 <td style="text-align:center;">
+dr_scad
+</td>
+<td style="text-align:center;">
 SCAD
+</td>
+<td style="text-align:center;">
+analytic
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
 </td>
 <td style="text-align:center;">
 0.05
@@ -255,6 +282,9 @@ SCAD
 0.084
 </td>
 <td style="text-align:center;">
+0.004
+</td>
+<td style="text-align:center;">
 0.111
 </td>
 <td style="text-align:center;">
@@ -266,7 +296,19 @@ SCAD
 </tr>
 <tr>
 <td style="text-align:center;">
+dr_scad
+</td>
+<td style="text-align:center;">
 lasso
+</td>
+<td style="text-align:center;">
+analytic
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
 </td>
 <td style="text-align:center;">
 0.05
@@ -279,6 +321,9 @@ lasso
 </td>
 <td style="text-align:center;">
 0.085
+</td>
+<td style="text-align:center;">
+0.004
 </td>
 <td style="text-align:center;">
 0.121
@@ -292,7 +337,19 @@ lasso
 </tr>
 <tr>
 <td style="text-align:center;">
+dr_scad
+</td>
+<td style="text-align:center;">
 MCP
+</td>
+<td style="text-align:center;">
+analytic
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
 </td>
 <td style="text-align:center;">
 0.05
@@ -307,6 +364,9 @@ MCP
 0.085
 </td>
 <td style="text-align:center;">
+0.004
+</td>
+<td style="text-align:center;">
 0.119
 </td>
 <td style="text-align:center;">
@@ -314,6 +374,129 @@ MCP
 </td>
 <td style="text-align:center;">
 0.468
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+dr_scad_boot
+</td>
+<td style="text-align:center;">
+SCAD
+</td>
+<td style="text-align:center;">
+bootstrap
+</td>
+<td style="text-align:center;">
+subbootstrap
+</td>
+<td style="text-align:center;">
+50
+</td>
+<td style="text-align:center;">
+0.05
+</td>
+<td style="text-align:center;">
+100
+</td>
+<td style="text-align:center;">
+0.002
+</td>
+<td style="text-align:center;">
+0.078
+</td>
+<td style="text-align:center;">
+0.008
+</td>
+<td style="text-align:center;">
+0.072
+</td>
+<td style="text-align:center;">
+<span style="background:#ffe6b3;padding:2px 6px;border-radius:3px;">0.910</span>
+</td>
+<td style="text-align:center;">
+0.282
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+dr_scad_boot
+</td>
+<td style="text-align:center;">
+lasso
+</td>
+<td style="text-align:center;">
+bootstrap
+</td>
+<td style="text-align:center;">
+subbootstrap
+</td>
+<td style="text-align:center;">
+50
+</td>
+<td style="text-align:center;">
+0.05
+</td>
+<td style="text-align:center;">
+100
+</td>
+<td style="text-align:center;">
+0.004
+</td>
+<td style="text-align:center;">
+0.079
+</td>
+<td style="text-align:center;">
+0.008
+</td>
+<td style="text-align:center;">
+0.073
+</td>
+<td style="text-align:center;">
+<span style="background:#ffe6b3;padding:2px 6px;border-radius:3px;">0.920</span>
+</td>
+<td style="text-align:center;">
+0.286
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+dr_scad_boot
+</td>
+<td style="text-align:center;">
+MCP
+</td>
+<td style="text-align:center;">
+bootstrap
+</td>
+<td style="text-align:center;">
+subbootstrap
+</td>
+<td style="text-align:center;">
+50
+</td>
+<td style="text-align:center;">
+0.05
+</td>
+<td style="text-align:center;">
+100
+</td>
+<td style="text-align:center;">
+0.004
+</td>
+<td style="text-align:center;">
+0.079
+</td>
+<td style="text-align:center;">
+0.008
+</td>
+<td style="text-align:center;">
+0.072
+</td>
+<td style="text-align:center;">
+<span style="background:#cfeacf;padding:2px 6px;border-radius:3px;">0.930</span>
+</td>
+<td style="text-align:center;">
+0.283
 </td>
 </tr>
 </tbody>
