@@ -1,2 +1,2 @@
 script,estimator,dgp,n_cells,total_runtime_sec,workers,nonprobsvy_version,r_version,platform,commit_sha,run_date
-dr_scad,dr,default,3,111.654659986496,3,0.2.3.9001,4.4.2,aarch64-apple-darwin20,62c764c,2026-05-14T07:03:13Z
+dr_scad,dr,default,3,157.209257602692,2,0.2.3.9001,4.6.0,x86_64-pc-linux-gnu,2d7b79a,2026-05-14T07:51:44Z
