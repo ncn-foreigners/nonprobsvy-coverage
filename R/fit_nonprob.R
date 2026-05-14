@@ -15,6 +15,7 @@ fit_nonprob <- function(dgp_out, cell, cfg) {
     cfg$estimator,
     "ipw" = fit_ipw(dgp_out, cell, cfg),
     "mi"  = fit_mi(dgp_out,  cell, cfg),
+    "dr"  = fit_dr(dgp_out,  cell, cfg),
     stop("Unknown estimator: '", cfg$estimator, "'")
   )
 }
@@ -76,6 +77,48 @@ fit_mi <- function(dgp_out, cell, cfg) {
     ),
     error = function(e) {
       message("[mi] fit failed: ", conditionMessage(e))
+      NULL
+    }
+  )
+
+  if (is.null(fit)) {
+    return(list(point = NA_real_, se = NA_real_, success = FALSE))
+  }
+  list(
+    point   = unname(fit$output$mean[1]),
+    se      = unname(fit$output$SE[1]),
+    success = TRUE
+  )
+}
+
+#' @keywords internal
+fit_dr <- function(dgp_out, cell, cfg) {
+  nonprob_df  <- dgp_out$pop[dgp_out$nonprob_idx]
+  outcome_rhs <- as.character(cfg$outcome_rhs %||% cell$outcome_rhs)
+  if (length(outcome_rhs) == 0L || is.na(outcome_rhs)) {
+    stop("fit_dr: config is missing 'outcome_rhs'")
+  }
+  selection_form <- stats::as.formula(as.character(cfg$selection_formula))
+  outcome_form   <- stats::as.formula(
+    paste(as.character(cell$target_var), "~", outcome_rhs)
+  )
+
+  fit <- tryCatch(
+    nonprobsvy::nonprob(
+      data              = nonprob_df,
+      selection         = selection_form,
+      outcome           = outcome_form,
+      svydesign         = dgp_out$prob_design,
+      method_selection  = as.character(cell$method_selection),
+      method_outcome    = as.character(cell$method_outcome %||% "glm"),
+      family_outcome    = as.character(cell$family_outcome %||% "gaussian"),
+      control_selection = make_control_sel(cell),
+      control_outcome   = make_control_out(cell),
+      control_inference = make_control_inf(cell, cfg),
+      se                = TRUE
+    ),
+    error = function(e) {
+      message("[dr] fit failed: ", conditionMessage(e))
       NULL
     }
   )

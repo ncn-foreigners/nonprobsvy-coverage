@@ -33,6 +33,12 @@ website:
             href: doc/mi/mi_pmm.qmd
           - text: MI (nonparametric / loess)
             href: doc/mi/mi_npar.qmd
+      - text: DR
+        menu:
+          - text: DR (GLM outcome)
+            href: doc/dr/dr_glm.qmd
+          - text: DR (variable selection)
+            href: doc/dr/dr_scad.qmd
     right:
       - icon: github
         href: https://github.com/ncn-foreigners/nonprobsvy-coverage

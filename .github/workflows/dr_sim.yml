@@ -1,0 +1,134 @@
+name: dr_sim
+
+on:
+  workflow_dispatch:
+    inputs:
+      nonprobsvy_ref:
+        description: "git ref of ncn-foreigners/nonprobsvy to install"
+        default: "dev"
+        required: false
+  schedule:
+    # Weekly rebuild every Sunday 06:00 UTC (offset from ipw_sim / mi_sim
+    # to space out the 'pages' concurrency group).
+    - cron: "0 6 * * 0"
+  push:
+    branches: [main]
+    paths:
+      - 'R/**'
+      - 'scripts/dr/**'
+      - 'tests/**'
+      - 'DESCRIPTION'
+      - 'NAMESPACE'
+      - '.github/workflows/dr_sim.yml'
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          cache-version: 1
+          extra-packages: |
+            any::knitr
+            any::rmarkdown
+            ncn-foreigners/nonprobsvy@${{ inputs.nonprobsvy_ref || 'dev' }}
+      - name: Install nonprobcover
+        run: R CMD INSTALL --no-help --no-html --no-byte-compile .
+      - name: Run testthat suite
+        run: Rscript -e 'library(nonprobcover); testthat::test_dir("tests/testthat", stop_on_failure = TRUE, reporter = testthat::SummaryReporter)'
+
+  sim:
+    needs: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        script: [dr_glm, dr_scad]
+    env:
+      NPC_WORKERS: 2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          cache-version: 1
+          extra-packages: |
+            any::knitr
+            any::rmarkdown
+            ncn-foreigners/nonprobsvy@${{ inputs.nonprobsvy_ref || 'dev' }}
+      - name: Install nonprobcover
+        run: R CMD INSTALL --no-help --no-html --no-byte-compile .
+      - name: Run ${{ matrix.script }}
+        run: Rscript scripts/dr/${{ matrix.script }}.R
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dr-${{ matrix.script }}
+          path: results/dr/${{ matrix.script }}_*
+          retention-days: 7
+
+  commit_and_deploy:
+    needs: sim
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          path: results/dr/
+          pattern: dr-*
+          merge-multiple: true
+
+      - name: Commit updated results
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results/
+          if git diff --staged --quiet; then
+            echo "No result changes."
+            exit 0
+          fi
+          git commit -m "ci(dr): update coverage results"
+          sleep $((10 + RANDOM % 60))
+          for i in 1 2 3; do
+            git pull --rebase --autostash origin main || true
+            if git push origin main; then break; fi
+            sleep $((10 + RANDOM % 60))
+          done
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          cache-version: 1
+          extra-packages: |
+            any::knitr
+            any::rmarkdown
+      - name: Install nonprobcover
+        run: R CMD INSTALL --no-help --no-html --no-byte-compile .
+
+      - uses: quarto-dev/quarto-actions/setup@v2
+      - name: Render site
+        run: quarto render
+      - uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: _site
+          clean: true

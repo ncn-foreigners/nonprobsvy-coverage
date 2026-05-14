@@ -1,0 +1,20 @@
+---
+title: "DR (GLM outcome)"
+---
+
+```{r setup}
+#| include: false
+source("../_helpers.R")
+```
+
+Doubly-robust estimator combining a logistic propensity score with a GLM outcome model. Both nuisance models are fit on `x1` and `x2`.
+
+```{r table, results = "asis"}
+render_coverage_page("dr", "dr_glm")
+```
+
+## Notes
+
+- DGP: `default`.
+- Bias is small (DR's claim to fame), but the analytical SE is conservative relative to the empirical sd of the point estimates — leading to over-coverage. Bootstrap variance is the recommended remedy.
+- `bias_correction = TRUE` (the joint-estimating-equations variant) is currently unavailable on the dev branch of `nonprobsvy` due to an upstream bug; once fixed, a `dr_bias_corr.R` script will be added here.
