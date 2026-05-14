@@ -15,6 +15,6 @@ pmm_match_type: [1, 2]
 pmm_weights: [none]
 var_method: [analytic]
 
-n_reps: 50
+n_reps: 200
 alpha: [0.05]
 seed: 2026

@@ -1,2 +1,2 @@
 script,estimator,dgp,n_cells,total_runtime_sec,workers,nonprobsvy_version,r_version,platform,commit_sha,run_date
-ipw_kim2021,ipw,kim2021,3,8.09927034378052,2,0.2.3.9001,4.6.0,x86_64-pc-linux-gnu,09d6897,2026-05-14T04:15:10Z
+ipw_kim2021,ipw,kim2021,3,7.031418800354,3,0.2.3.9001,4.4.2,aarch64-apple-darwin20,03b9b08,2026-05-14T06:29:32Z
