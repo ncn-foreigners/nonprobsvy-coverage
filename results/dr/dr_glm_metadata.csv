@@ -1,2 +1,2 @@
 script,estimator,dgp,n_cells,total_runtime_sec,workers,nonprobsvy_version,r_version,platform,commit_sha,run_date
-dr_glm,dr,default,2,3.41376399993897,3,0.2.3.9001,4.4.2,aarch64-apple-darwin20,03b9b08,2026-05-14T06:32:30Z
+dr_glm,dr,default,2,6.47596573829651,2,0.2.3.9001,4.6.0,x86_64-pc-linux-gnu,62c764c,2026-05-14T07:03:00Z
