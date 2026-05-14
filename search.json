@@ -4,7 +4,7 @@
     "href": "doc/dr/dr_scad.html",
     "title": "DR (variable selection: SCAD / lasso / MCP)",
     "section": "",
-    "text": "Doubly-robust estimator with penalised nuisance models on both sides: the propensity score and the outcome regression each carry the same penalty and a redundant covariate x3 that the DGP doesn’t actually use.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 07:51:44  |  commit: 2d7b79a"
+    "text": "Doubly-robust estimator with penalised nuisance models on both sides: the propensity score and the outcome regression each carry the same penalty and a redundant covariate x3 that the DGP doesn’t actually use.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 09:12:12  |  commit: 462de2a"
   },
   {
     "objectID": "doc/dr/dr_scad.html#notes",
@@ -151,7 +151,7 @@
     "href": "doc/dr/dr_glm.html",
     "title": "DR (GLM outcome)",
     "section": "",
-    "text": "Doubly-robust estimator combining a logistic propensity score with a GLM outcome model. Both nuisance models are fit on x1 and x2.\nnonprobsvy version: 0.2.3.9001  |  R: 4.4.2  |  run: 2026-05-14 08:14:58  |  commit: 2d7b79a"
+    "text": "Doubly-robust estimator combining a logistic propensity score with a GLM outcome model. Both nuisance models are fit on x1 and x2.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 09:34:35  |  commit: 462de2a"
   },
   {
     "objectID": "doc/dr/dr_glm.html#notes",
