@@ -46,7 +46,7 @@
     "href": "doc/ipw/ipw_scad.html",
     "title": "IPW (variable selection: SCAD / lasso / MCP)",
     "section": "",
-    "text": "Inverse probability weighting with a penalised propensity score. The selection formula includes a redundant covariate x3 (which the DGP does not use for selection); each penalty should learn to drop it.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 07:53:36  |  commit: 2d7b79a"
+    "text": "Inverse probability weighting with a penalised propensity score. The selection formula includes a redundant covariate x3 (which the DGP does not use for selection); each penalty should learn to drop it.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 09:02:53  |  commit: 462de2a"
   },
   {
     "objectID": "doc/ipw/ipw_scad.html#notes",
@@ -60,7 +60,7 @@
     "href": "doc/ipw/ipw_gee.html",
     "title": "IPW (GEE calibration)",
     "section": "",
-    "text": "Inverse probability weighting where the propensity score parameters solve a generalised estimating equation (calibration-style constraints) rather than the maximum-likelihood score. Both smoothing variants from the literature are shown — gee_h_fun = 1 (logarithmic) and gee_h_fun = 2 (exponential).\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 08:04:11  |  commit: 2d7b79a"
+    "text": "Inverse probability weighting where the propensity score parameters solve a generalised estimating equation (calibration-style constraints) rather than the maximum-likelihood score. Both smoothing variants from the literature are shown — gee_h_fun = 1 (logarithmic) and gee_h_fun = 2 (exponential).\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 09:16:30  |  commit: 462de2a"
   },
   {
     "objectID": "doc/ipw/ipw_gee.html#notes",
@@ -95,7 +95,7 @@
     "href": "doc/ipw/ipw_kim2021.html",
     "title": "IPW (MLE) on the Kim et al. (2021) DGP",
     "section": "",
-    "text": "Inverse probability weighting (MLE) on the data-generating process from Kim, Park, Chen & Wu (2021), JRSSA 184(3). The DGP draws x ~ N(2, 1) and three outcomes constructed so that all three have theoretical population mean 5. The non-probability sample oversamples the lower tail of x (70% from strata == TRUE, 30% from strata == FALSE).\nnonprobsvy version: 0.2.3.9001  |  R: 4.4.2  |  run: 2026-05-14 07:53:09  |  commit: 2d7b79a"
+    "text": "Inverse probability weighting (MLE) on the data-generating process from Kim, Park, Chen & Wu (2021), JRSSA 184(3). The DGP draws x ~ N(2, 1) and three outcomes constructed so that all three have theoretical population mean 5. The non-probability sample oversamples the lower tail of x (70% from strata == TRUE, 30% from strata == FALSE).\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 09:21:40  |  commit: 462de2a"
   },
   {
     "objectID": "doc/ipw/ipw_kim2021.html#notes",
@@ -109,7 +109,7 @@
     "href": "doc/ipw/ipw_mle.html",
     "title": "IPW (MLE)",
     "section": "",
-    "text": "Empirical coverage of the inverse probability weighting estimator with the propensity score fit by maximum likelihood. Spike scope: one DGP (default), logit link, analytical variance.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 07:55:50  |  commit: 2d7b79a"
+    "text": "Empirical coverage of the inverse probability weighting estimator with the propensity score fit by maximum likelihood. Spike scope: one DGP (default), logit link, analytical variance.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 09:06:48  |  commit: 462de2a"
   },
   {
     "objectID": "doc/ipw/ipw_mle.html#notes",
