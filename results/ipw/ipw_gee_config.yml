@@ -13,6 +13,6 @@ est_method: [gee]
 gee_h_fun: [1, 2]
 var_method: [analytic]
 
-n_reps: 200
+n_reps: 500
 alpha: [0.05, 0.10]
 seed: 2026

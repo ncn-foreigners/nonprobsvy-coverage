@@ -11,6 +11,6 @@ method_selection: [logit]
 target_var: ["y1", "y2", "y3"]
 var_method: [analytic]
 
-n_reps: 200
+n_reps: 500
 alpha: [0.05]
 seed: 2026

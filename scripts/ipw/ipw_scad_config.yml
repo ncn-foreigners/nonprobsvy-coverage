@@ -15,6 +15,6 @@ penalty: [SCAD, lasso, MCP]
 nfolds: [5]
 var_method: [analytic]
 
-n_reps: 200        # CV inside each replicate is slow
+n_reps: 500        # CV inside each replicate is slow
 alpha: [0.05]
 seed: 2026

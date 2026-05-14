@@ -1,35 +1,44 @@
-#' Default coverage-spec DGP
+#' Default coverage-spec DGP — population generation step
 #'
-#' A small, deliberately simple data-generating process used for the spike
-#' and for sanity-checking the harness. Three independent standard-normal
-#' covariates, linear outcome, logistic selection biased by x1 and x2.
-#' The probability sample is a simple random sample with equal weights.
+#' Design-based simulation convention: the finite population is generated
+#' once per cell. Each Monte Carlo replicate then redraws *only* the
+#' probability and non-probability samples (via [dgp_default_resample()]).
 #'
-#' True target: population mean of y, equal to the intercept (1) in
-#' expectation (covariates are zero-mean).
+#' Three independent standard-normal covariates, linear outcome
+#' `y = 1 + x1 + 0.5 x2 - 0.3 x3 + N(0, 1)`. The true target is the
+#' finite-population mean of `y` (or whichever column `target_var` names).
 #'
 #' @param n_pop Population size.
-#' @param n_nonprob Expected non-probability sample size. The selection
-#'   intercept is calibrated so E\[sum(R_i)\] = n_nonprob.
-#' @param n_prob Probability sample size (SRS).
-#' @param target_var Name of the outcome column to expose as `true_target`.
-#'   Only `"y"` is meaningful for this DGP, but the argument exists so the
-#'   contract matches the paper DGPs (Kim 2021, Yang 2021, ...).
-#' @param ... Ignored. Accepts extra arguments from generic callers so the
-#'   dispatcher can pass the full parameter cell without erroring.
-#' @return A list with `pop` (data.table), `nonprob_idx`, `prob_idx`,
-#'   `prob_design` (svydesign), `true_target`.
+#' @param target_var Outcome column whose finite-population mean is the
+#'   `true_target`. Only `"y"` is meaningful for this DGP.
+#' @param ... Ignored; lets the generic dispatcher pass extra cell entries.
+#' @return list(pop = data.table, true_target = numeric scalar).
 #' @export
-dgp_default <- function(n_pop = 10000, n_nonprob = 500, n_prob = 500,
-                        target_var = "y", ...) {
-  N <- as.integer(n_pop)
+dgp_default_population <- function(n_pop = 10000, target_var = "y", ...) {
+  N  <- as.integer(n_pop)
   x1 <- stats::rnorm(N)
   x2 <- stats::rnorm(N)
   x3 <- stats::rnorm(N)
   y  <- 1 + x1 + 0.5 * x2 - 0.3 * x3 + stats::rnorm(N)
+  pop <- data.table::data.table(x1 = x1, x2 = x2, x3 = x3, y = y)
+  list(pop = pop, true_target = mean(pop[[as.character(target_var)]]))
+}
 
-  # selection: logit linear in x1, x2; intercept chosen so E[sum R] = n_nonprob
-  lin_no_intercept <- 0.7 * x1 - 0.4 * x2
+#' Default DGP — per-replicate sampling step
+#'
+#' Selection is logit linear in `x1` and `x2` with the intercept chosen so
+#' `E[sum(R_i)] = n_nonprob`. The probability sample is a simple random
+#' sample of size `n_prob` with equal design weights.
+#'
+#' @param pop data.table returned by [dgp_default_population()].
+#' @param n_nonprob Expected non-probability sample size.
+#' @param n_prob Probability sample size.
+#' @param ... Ignored.
+#' @return list(nonprob_idx, prob_idx, prob_design).
+#' @export
+dgp_default_resample <- function(pop, n_nonprob = 500, n_prob = 500, ...) {
+  N <- nrow(pop)
+  lin_no_intercept <- 0.7 * pop$x1 - 0.4 * pop$x2
   theta0 <- stats::uniroot(
     function(a) sum(stats::plogis(a + lin_no_intercept)) - n_nonprob,
     interval = c(-15, 5)
@@ -39,18 +48,29 @@ dgp_default <- function(n_pop = 10000, n_nonprob = 500, n_prob = 500,
   nonprob_idx <- which(R == 1L)
 
   prob_idx <- sample.int(N, size = as.integer(n_prob))
-  d <- rep(N / n_prob, length(prob_idx))
-
-  pop <- data.table::data.table(x1 = x1, x2 = x2, x3 = x3, y = y)
-  prob_df <- pop[prob_idx]
-  prob_df[, d := d]
+  prob_df  <- pop[prob_idx]
+  prob_df[, d := N / n_prob]
   prob_design <- survey::svydesign(ids = ~1, weights = ~d, data = prob_df)
 
-  list(
-    pop          = pop,
-    nonprob_idx  = nonprob_idx,
-    prob_idx     = prob_idx,
-    prob_design  = prob_design,
-    true_target  = mean(pop[[as.character(target_var)]])
-  )
+  list(nonprob_idx = nonprob_idx, prob_idx = prob_idx,
+       prob_design = prob_design)
+}
+
+#' Default DGP — one-shot wrapper (population + samples in a single call)
+#'
+#' Convenience wrapper around [dgp_default_population()] +
+#' [dgp_default_resample()]. Kept for ad-hoc use and for tests that need
+#' both steps; the sim driver itself uses the two-step path so the
+#' population stays fixed across replicates.
+#' @export
+dgp_default <- function(n_pop = 10000, n_nonprob = 500, n_prob = 500,
+                        target_var = "y", ...) {
+  pop_out  <- dgp_default_population(n_pop = n_pop, target_var = target_var)
+  samp_out <- dgp_default_resample(pop_out$pop,
+                                    n_nonprob = n_nonprob, n_prob = n_prob)
+  list(pop = pop_out$pop,
+       nonprob_idx = samp_out$nonprob_idx,
+       prob_idx = samp_out$prob_idx,
+       prob_design = samp_out$prob_design,
+       true_target = pop_out$true_target)
 }

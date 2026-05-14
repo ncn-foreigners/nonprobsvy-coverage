@@ -12,6 +12,6 @@ method_outcome: [glm]
 family_outcome: [gaussian]
 var_method: [analytic]
 
-n_reps: 200
+n_reps: 500
 alpha: [0.05, 0.10]
 seed: 2026

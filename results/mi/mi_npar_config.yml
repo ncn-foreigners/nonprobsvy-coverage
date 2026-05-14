@@ -13,6 +13,6 @@ method_outcome: [npar]
 family_outcome: [gaussian]
 var_method: [analytic]
 
-n_reps: 200
+n_reps: 500
 alpha: [0.05]
 seed: 2026
