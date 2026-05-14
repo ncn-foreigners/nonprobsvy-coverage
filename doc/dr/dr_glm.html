@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MI (GLM) – nonprobsvy Coverage</title>
+<title>DR (GLM outcome) – nonprobsvy Coverage</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -182,14 +182,14 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#notes" id="toc-notes" class="nav-link active" data-scroll-target="#notes">Notes</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/ncn-foreigners/nonprobsvy-coverage/edit/main/doc/mi/mi_glm.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ncn-foreigners/nonprobsvy-coverage/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/ncn-foreigners/nonprobsvy-coverage/edit/main/doc/dr/dr_glm.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ncn-foreigners/nonprobsvy-coverage/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">MI (GLM)</h1>
+<h1 class="title">DR (GLM outcome)</h1>
 </div>
 
 
@@ -206,8 +206,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Mass imputation with a GLM outcome model. The non-probability sample fits <code>y ~ x1 + x2</code> and the predictions are aggregated over the probability sample.</p>
-<p><strong>nonprobsvy version:</strong> <code>0.2.3.9001</code> &nbsp;|&nbsp; <strong>R:</strong> <code>4.6.0</code> &nbsp;|&nbsp; <strong>run:</strong> <code>2026-05-14 04:48:08</code> &nbsp;|&nbsp; <strong>commit:</strong> <code>03b9b08</code></p>
+<p>Doubly-robust estimator combining a logistic propensity score with a GLM outcome model. Both nuisance models are fit on <code>x1</code> and <code>x2</code>.</p>
+<p><strong>nonprobsvy version:</strong> <code>0.2.3.9001</code> &nbsp;|&nbsp; <strong>R:</strong> <code>4.4.2</code> &nbsp;|&nbsp; <strong>run:</strong> <code>2026-05-14 04:42:28</code> &nbsp;|&nbsp; <strong>commit:</strong> <code>09d6897</code></p>
 <table class="table table-sm">
 <thead>
 <tr>
@@ -234,10 +234,10 @@ ci_width
 50
 </td>
 <td style="text-align:center;">
-<span style="background:#cfeacf;padding:2px 6px;border-radius:3px;">0.960</span>
+<span style="background:#f4c4c4;padding:2px 6px;border-radius:3px;">1.000</span>
 </td>
 <td style="text-align:center;">
-0.303
+0.504
 </td>
 </tr>
 <tr>
@@ -248,10 +248,10 @@ ci_width
 50
 </td>
 <td style="text-align:center;">
-<span style="background:#ffe6b3;padding:2px 6px;border-radius:3px;">0.840</span>
+<span style="background:#f4c4c4;padding:2px 6px;border-radius:3px;">1.000</span>
 </td>
 <td style="text-align:center;">
-0.254
+0.423
 </td>
 </tr>
 </tbody>
@@ -259,9 +259,9 @@ ci_width
 <section id="notes" class="level2">
 <h2 class="anchored" data-anchor-id="notes">Notes</h2>
 <ul>
-<li>DGP: <code>default</code> (linear outcome, <code>y = 1 + x1 + 0.5 x2 - 0.3 x3 + N(0,1)</code>).</li>
-<li>The outcome model is correctly specified for this DGP.</li>
-<li>Analytical SE for GLM-based MI uses the standard linearisation argument and should yield well-calibrated CIs at the nominal level.</li>
+<li>DGP: <code>default</code>.</li>
+<li>Bias is small (DR’s claim to fame), but the analytical SE is conservative relative to the empirical sd of the point estimates — leading to over-coverage. Bootstrap variance is the recommended remedy.</li>
+<li><code>bias_correction = TRUE</code> (the joint-estimating-equations variant) is currently unavailable on the dev branch of <code>nonprobsvy</code> due to an upstream bug; once fixed, a <code>dr_bias_corr.R</code> script will be added here.</li>
 </ul>
 
 
@@ -676,7 +676,7 @@ ci_width
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ncn-foreigners/nonprobsvy-coverage/edit/main/doc/mi/mi_glm.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ncn-foreigners/nonprobsvy-coverage/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ncn-foreigners/nonprobsvy-coverage/edit/main/doc/dr/dr_glm.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ncn-foreigners/nonprobsvy-coverage/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>NCN OPUS 20 grant no. 2020/39/B/HS4/00941</p>
 </div>

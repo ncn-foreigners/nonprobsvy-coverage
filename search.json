@@ -1,10 +1,24 @@
 [
   {
+    "objectID": "doc/dr/dr_scad.html",
+    "href": "doc/dr/dr_scad.html",
+    "title": "DR (variable selection: SCAD / lasso / MCP)",
+    "section": "",
+    "text": "Doubly-robust estimator with penalised nuisance models on both sides: the propensity score and the outcome regression each carry the same penalty and a redundant covariate x3 that the DGP doesn’t actually use.\nnonprobsvy version: 0.2.3.9001  |  R: 4.4.2  |  run: 2026-05-14 04:42:37  |  commit: 09d6897"
+  },
+  {
+    "objectID": "doc/dr/dr_scad.html#notes",
+    "href": "doc/dr/dr_scad.html#notes",
+    "title": "DR (variable selection: SCAD / lasso / MCP)",
+    "section": "Notes",
+    "text": "Notes\n\nDGP: default with ~ x1 + x2 + x3 on both selection and outcome.\nLike dr_glm, the analytical SE here is conservative — over-coverage at the 5% level is the expected pattern. Coverage typically settles closer to nominal under bootstrap.\nn_reps is reduced to 30 because both penalised models run cross-validation inside each replicate."
+  },
+  {
     "objectID": "doc/mi/mi_npar.html",
     "href": "doc/mi/mi_npar.html",
     "title": "MI (nonparametric / loess)",
     "section": "",
-    "text": "Mass imputation with a nonparametric (loess) outcome model. Only a small number of covariates is supported by nonprobsvy; here we fit y ~ x1 + x2.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 04:09:23  |  commit: 09d6897"
+    "text": "Mass imputation with a nonparametric (loess) outcome model. Only a small number of covariates is supported by nonprobsvy; here we fit y ~ x1 + x2.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 04:48:17  |  commit: 03b9b08"
   },
   {
     "objectID": "doc/mi/mi_npar.html#notes",
@@ -18,7 +32,7 @@
     "href": "doc/mi/mi_glm.html",
     "title": "MI (GLM)",
     "section": "",
-    "text": "Mass imputation with a GLM outcome model. The non-probability sample fits y ~ x1 + x2 and the predictions are aggregated over the probability sample.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 04:09:19  |  commit: 09d6897"
+    "text": "Mass imputation with a GLM outcome model. The non-probability sample fits y ~ x1 + x2 and the predictions are aggregated over the probability sample.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 04:48:08  |  commit: 03b9b08"
   },
   {
     "objectID": "doc/mi/mi_glm.html#notes",
@@ -116,7 +130,7 @@
     "href": "doc/mi/mi_pmm.html",
     "title": "MI (predictive mean matching)",
     "section": "",
-    "text": "Mass imputation by predictive mean matching: a regression y ~ x1 + x2 is fit on the non-probability sample, donors are chosen by closeness in either predicted-y (pmm_match_type = 1) or observed-y (pmm_match_type = 2) space, and the donor outcomes are aggregated over the probability sample.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 04:09:45  |  commit: 09d6897"
+    "text": "Mass imputation by predictive mean matching: a regression y ~ x1 + x2 is fit on the non-probability sample, donors are chosen by closeness in either predicted-y (pmm_match_type = 1) or observed-y (pmm_match_type = 2) space, and the donor outcomes are aggregated over the probability sample.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 04:48:48  |  commit: 03b9b08"
   },
   {
     "objectID": "doc/mi/mi_pmm.html#notes",
@@ -130,7 +144,7 @@
     "href": "doc/mi/mi_nn.html",
     "title": "MI (nearest neighbour)",
     "section": "",
-    "text": "Mass imputation where the non-probability sample serves as the donor pool for k-nearest-neighbour imputation onto the probability sample.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 04:09:43  |  commit: 09d6897"
+    "text": "Mass imputation where the non-probability sample serves as the donor pool for k-nearest-neighbour imputation onto the probability sample.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 04:49:00  |  commit: 03b9b08"
   },
   {
     "objectID": "doc/mi/mi_nn.html#notes",
@@ -138,5 +152,19 @@
     "title": "MI (nearest neighbour)",
     "section": "Notes",
     "text": "Notes\n\nDGP: default.\nThe analytical SE for NN-imputation does not account for the additional variability introduced by the donor selection step. Expect under-coverage; bootstrap variance is the recommended remedy.\nSweeps k = 1 and k = 5."
+  },
+  {
+    "objectID": "doc/dr/dr_glm.html",
+    "href": "doc/dr/dr_glm.html",
+    "title": "DR (GLM outcome)",
+    "section": "",
+    "text": "Doubly-robust estimator combining a logistic propensity score with a GLM outcome model. Both nuisance models are fit on x1 and x2.\nnonprobsvy version: 0.2.3.9001  |  R: 4.4.2  |  run: 2026-05-14 04:42:28  |  commit: 09d6897"
+  },
+  {
+    "objectID": "doc/dr/dr_glm.html#notes",
+    "href": "doc/dr/dr_glm.html#notes",
+    "title": "DR (GLM outcome)",
+    "section": "Notes",
+    "text": "Notes\n\nDGP: default.\nBias is small (DR’s claim to fame), but the analytical SE is conservative relative to the empirical sd of the point estimates — leading to over-coverage. Bootstrap variance is the recommended remedy.\nbias_correction = TRUE (the joint-estimating-equations variant) is currently unavailable on the dev branch of nonprobsvy due to an upstream bug; once fixed, a dr_bias_corr.R script will be added here."
   }
 ]
