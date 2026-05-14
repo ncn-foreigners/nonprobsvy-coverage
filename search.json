@@ -18,7 +18,7 @@
     "href": "doc/mi/mi_npar.html",
     "title": "MI (nonparametric / loess)",
     "section": "",
-    "text": "Mass imputation with a nonparametric (loess) outcome model. Only a small number of covariates is supported by nonprobsvy; here we fit y ~ x1 + x2.\nnonprobsvy version: 0.2.3.9001  |  R: 4.4.2  |  run: 2026-05-14 06:59:15  |  commit: 62c764c"
+    "text": "Mass imputation with a nonparametric (loess) outcome model. Only a small number of covariates is supported by nonprobsvy; here we fit y ~ x1 + x2.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 07:56:04  |  commit: 2d7b79a"
   },
   {
     "objectID": "doc/mi/mi_npar.html#notes",
@@ -32,7 +32,7 @@
     "href": "doc/mi/mi_glm.html",
     "title": "MI (GLM)",
     "section": "",
-    "text": "Mass imputation with a GLM outcome model. The non-probability sample fits y ~ x1 + x2 and the predictions are aggregated over the probability sample.\nnonprobsvy version: 0.2.3.9001  |  R: 4.4.2  |  run: 2026-05-14 06:56:18  |  commit: 62c764c"
+    "text": "Mass imputation with a GLM outcome model. The non-probability sample fits y ~ x1 + x2 and the predictions are aggregated over the probability sample.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 07:55:27  |  commit: 2d7b79a"
   },
   {
     "objectID": "doc/mi/mi_glm.html#notes",
@@ -123,7 +123,7 @@
     "href": "doc/mi/mi_pmm.html",
     "title": "MI (predictive mean matching)",
     "section": "",
-    "text": "Mass imputation by predictive mean matching: a regression y ~ x1 + x2 is fit on the non-probability sample, donors are chosen by closeness in either predicted-y (pmm_match_type = 1) or observed-y (pmm_match_type = 2) space, and the donor outcomes are aggregated over the probability sample.\nnonprobsvy version: 0.2.3.9001  |  R: 4.4.2  |  run: 2026-05-14 07:01:14  |  commit: 62c764c"
+    "text": "Mass imputation by predictive mean matching: a regression y ~ x1 + x2 is fit on the non-probability sample, donors are chosen by closeness in either predicted-y (pmm_match_type = 1) or observed-y (pmm_match_type = 2) space, and the donor outcomes are aggregated over the probability sample.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 07:58:56  |  commit: 2d7b79a"
   },
   {
     "objectID": "doc/mi/mi_pmm.html#notes",
@@ -137,7 +137,7 @@
     "href": "doc/mi/mi_nn.html",
     "title": "MI (nearest neighbour)",
     "section": "",
-    "text": "Mass imputation where the non-probability sample serves as the donor pool for k-nearest-neighbour imputation onto the probability sample.\nnonprobsvy version: 0.2.3.9001  |  R: 4.4.2  |  run: 2026-05-14 06:58:28  |  commit: 62c764c"
+    "text": "Mass imputation where the non-probability sample serves as the donor pool for k-nearest-neighbour imputation onto the probability sample.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 07:58:51  |  commit: 2d7b79a"
   },
   {
     "objectID": "doc/mi/mi_nn.html#notes",
