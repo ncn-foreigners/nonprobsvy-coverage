@@ -9,8 +9,10 @@ n_nonprob: [1000]
 n_prob: [500]
 method_selection: [logit]
 target_var: ["y1", "y2", "y3"]
-var_method: [analytic]
+var_method: [analytic, bootstrap]
+rep_type: [subbootstrap]
 
 n_reps: 500
+num_boot: 200
 alpha: [0.05]
 seed: 2026

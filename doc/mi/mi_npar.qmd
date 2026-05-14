@@ -10,7 +10,7 @@ source("../_helpers.R")
 Mass imputation with a nonparametric (loess) outcome model. Only a small number of covariates is supported by `nonprobsvy`; here we fit `y ~ x1 + x2`.
 
 ```{r table, results = "asis"}
-render_coverage_page("mi", "mi_npar")
+render_coverage_page_multi("mi", c("mi_npar", "mi_npar_boot"))
 ```
 
 ## Notes

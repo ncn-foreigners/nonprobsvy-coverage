@@ -58,7 +58,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        script: [dr_glm, dr_scad]
+        script: [dr_glm, dr_scad, dr_scad_boot]
     env:
       NPC_WORKERS: 2
     steps:

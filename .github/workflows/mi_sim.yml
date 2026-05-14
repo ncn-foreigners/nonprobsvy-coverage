@@ -58,7 +58,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        script: [mi_glm, mi_nn, mi_pmm, mi_npar]
+        script: [mi_glm, mi_nn, mi_nn_boot, mi_pmm, mi_pmm_boot, mi_npar, mi_npar_boot]
     env:
       NPC_WORKERS: 2
     steps:

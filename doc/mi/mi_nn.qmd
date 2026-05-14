@@ -10,7 +10,7 @@ source("../_helpers.R")
 Mass imputation where the non-probability sample serves as the donor pool for `k`-nearest-neighbour imputation onto the probability sample.
 
 ```{r table, results = "asis"}
-render_coverage_page("mi", "mi_nn")
+render_coverage_page_multi("mi", c("mi_nn", "mi_nn_boot"))
 ```
 
 ## Notes

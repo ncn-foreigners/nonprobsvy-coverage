@@ -58,7 +58,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        script: [ipw_mle, ipw_gee, ipw_scad, ipw_kim2021]
+        script: [ipw_mle, ipw_gee, ipw_scad, ipw_scad_boot, ipw_kim2021]
     env:
       NPC_WORKERS: 2
     steps:

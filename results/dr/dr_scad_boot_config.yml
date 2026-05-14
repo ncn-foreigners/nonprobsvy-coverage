@@ -1,0 +1,27 @@
+script: dr_scad_boot
+estimator: dr
+dgp: default
+
+# Bootstrap-only counterpart of dr_scad. CV-driven penalty selection on
+# both selection and outcome models, so the inner bootstrap is expensive
+# - we cap n_reps and num_boot.
+selection_formula: "~ x1 + x2 + x3"
+outcome_rhs: "x1 + x2 + x3"
+
+n_pop: [10000]
+n_nonprob: [500]
+n_prob: [500]
+method_selection: [logit]
+method_outcome: [glm]
+family_outcome: [gaussian]
+target_var: ["y"]
+vars_selection: [true]
+penalty: [SCAD, lasso, MCP]
+nfolds: [5]
+var_method: [bootstrap]
+rep_type: [subbootstrap]
+
+n_reps: 100
+num_boot: 50
+alpha: [0.05]
+seed: 2026

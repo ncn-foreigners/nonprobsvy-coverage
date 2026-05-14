@@ -10,7 +10,7 @@ source("../_helpers.R")
 Doubly-robust estimator with penalised nuisance models on *both* sides: the propensity score and the outcome regression each carry the same penalty and a redundant covariate `x3` that the DGP doesn't actually use.
 
 ```{r table, results = "asis"}
-render_coverage_page("dr", "dr_scad")
+render_coverage_page_multi("dr", c("dr_scad", "dr_scad_boot"))
 ```
 
 ## Notes

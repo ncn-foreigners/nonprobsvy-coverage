@@ -10,7 +10,7 @@ source("../_helpers.R")
 Inverse probability weighting with a penalised propensity score. The selection formula includes a redundant covariate `x3` (which the DGP does *not* use for selection); each penalty should learn to drop it.
 
 ```{r table, results = "asis"}
-render_coverage_page("ipw", "ipw_scad")
+render_coverage_page_multi("ipw", c("ipw_scad", "ipw_scad_boot"))
 ```
 
 ## Notes

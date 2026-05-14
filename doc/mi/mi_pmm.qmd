@@ -10,7 +10,7 @@ source("../_helpers.R")
 Mass imputation by predictive mean matching: a regression `y ~ x1 + x2` is fit on the non-probability sample, donors are chosen by closeness in either predicted-`y` (`pmm_match_type = 1`) or observed-`y` (`pmm_match_type = 2`) space, and the donor outcomes are aggregated over the probability sample.
 
 ```{r table, results = "asis"}
-render_coverage_page("mi", "mi_pmm")
+render_coverage_page_multi("mi", c("mi_pmm", "mi_pmm_boot"))
 ```
 
 ## Notes
