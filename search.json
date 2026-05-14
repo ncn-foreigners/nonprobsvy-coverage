@@ -4,7 +4,7 @@
     "href": "doc/dr/dr_scad.html",
     "title": "DR (variable selection: SCAD / lasso / MCP)",
     "section": "",
-    "text": "Doubly-robust estimator with penalised nuisance models on both sides: the propensity score and the outcome regression each carry the same penalty and a redundant covariate x3 that the DGP doesn’t actually use.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 06:58:27  |  commit: 62c764c"
+    "text": "Doubly-robust estimator with penalised nuisance models on both sides: the propensity score and the outcome regression each carry the same penalty and a redundant covariate x3 that the DGP doesn’t actually use.\nnonprobsvy version: 0.2.3.9001  |  R: 4.4.2  |  run: 2026-05-14 07:03:13  |  commit: 62c764c"
   },
   {
     "objectID": "doc/dr/dr_scad.html#notes",
@@ -18,7 +18,7 @@
     "href": "doc/mi/mi_npar.html",
     "title": "MI (nonparametric / loess)",
     "section": "",
-    "text": "Mass imputation with a nonparametric (loess) outcome model. Only a small number of covariates is supported by nonprobsvy; here we fit y ~ x1 + x2.\nnonprobsvy version: 0.2.3.9001  |  R: 4.4.2  |  run: 2026-05-14 06:31:38  |  commit: 03b9b08"
+    "text": "Mass imputation with a nonparametric (loess) outcome model. Only a small number of covariates is supported by nonprobsvy; here we fit y ~ x1 + x2.\nnonprobsvy version: 0.2.3.9001  |  R: 4.4.2  |  run: 2026-05-14 06:59:15  |  commit: 62c764c"
   },
   {
     "objectID": "doc/mi/mi_npar.html#notes",
@@ -32,7 +32,7 @@
     "href": "doc/mi/mi_glm.html",
     "title": "MI (GLM)",
     "section": "",
-    "text": "Mass imputation with a GLM outcome model. The non-probability sample fits y ~ x1 + x2 and the predictions are aggregated over the probability sample.\nnonprobsvy version: 0.2.3.9001  |  R: 4.4.2  |  run: 2026-05-14 06:30:32  |  commit: 03b9b08"
+    "text": "Mass imputation with a GLM outcome model. The non-probability sample fits y ~ x1 + x2 and the predictions are aggregated over the probability sample.\nnonprobsvy version: 0.2.3.9001  |  R: 4.4.2  |  run: 2026-05-14 06:56:18  |  commit: 62c764c"
   },
   {
     "objectID": "doc/mi/mi_glm.html#notes",
@@ -46,7 +46,7 @@
     "href": "doc/ipw/ipw_scad.html",
     "title": "IPW (variable selection: SCAD / lasso / MCP)",
     "section": "",
-    "text": "Inverse probability weighting with a penalised propensity score. The selection formula includes a redundant covariate x3 (which the DGP does not use for selection); each penalty should learn to drop it.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 06:42:52  |  commit: 62c764c"
+    "text": "Inverse probability weighting with a penalised propensity score. The selection formula includes a redundant covariate x3 (which the DGP does not use for selection); each penalty should learn to drop it.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 07:23:01  |  commit: 85ca7cd"
   },
   {
     "objectID": "doc/ipw/ipw_scad.html#notes",
@@ -60,7 +60,7 @@
     "href": "doc/ipw/ipw_gee.html",
     "title": "IPW (GEE calibration)",
     "section": "",
-    "text": "Inverse probability weighting where the propensity score parameters solve a generalised estimating equation (calibration-style constraints) rather than the maximum-likelihood score. Both smoothing variants from the literature are shown — gee_h_fun = 1 (logarithmic) and gee_h_fun = 2 (exponential).\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 06:37:44  |  commit: 62c764c"
+    "text": "Inverse probability weighting where the propensity score parameters solve a generalised estimating equation (calibration-style constraints) rather than the maximum-likelihood score. Both smoothing variants from the literature are shown — gee_h_fun = 1 (logarithmic) and gee_h_fun = 2 (exponential).\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 07:20:07  |  commit: 85ca7cd"
   },
   {
     "objectID": "doc/ipw/ipw_gee.html#notes",
@@ -102,7 +102,7 @@
     "href": "doc/ipw/ipw_kim2021.html",
     "title": "IPW (MLE) on the Kim et al. (2021) DGP",
     "section": "",
-    "text": "Inverse probability weighting (MLE) on the data-generating process from Kim, Park, Chen & Wu (2021), JRSSA 184(3). The DGP draws x ~ N(2, 1) and three outcomes constructed so that all three have theoretical population mean 5. The non-probability sample oversamples the lower tail of x (70% from strata == TRUE, 30% from strata == FALSE).\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 06:37:45  |  commit: 62c764c"
+    "text": "Inverse probability weighting (MLE) on the data-generating process from Kim, Park, Chen & Wu (2021), JRSSA 184(3). The DGP draws x ~ N(2, 1) and three outcomes constructed so that all three have theoretical population mean 5. The non-probability sample oversamples the lower tail of x (70% from strata == TRUE, 30% from strata == FALSE).\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 07:25:42  |  commit: 85ca7cd"
   },
   {
     "objectID": "doc/ipw/ipw_kim2021.html#notes",
@@ -116,7 +116,7 @@
     "href": "doc/ipw/ipw_mle.html",
     "title": "IPW (MLE)",
     "section": "",
-    "text": "Empirical coverage of the inverse probability weighting estimator with the propensity score fit by maximum likelihood. Spike scope: one DGP (default), logit link, analytical variance.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 06:41:23  |  commit: 62c764c"
+    "text": "Empirical coverage of the inverse probability weighting estimator with the propensity score fit by maximum likelihood. Spike scope: one DGP (default), logit link, analytical variance.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 07:20:03  |  commit: 85ca7cd"
   },
   {
     "objectID": "doc/ipw/ipw_mle.html#notes",
@@ -130,7 +130,7 @@
     "href": "doc/mi/mi_pmm.html",
     "title": "MI (predictive mean matching)",
     "section": "",
-    "text": "Mass imputation by predictive mean matching: a regression y ~ x1 + x2 is fit on the non-probability sample, donors are chosen by closeness in either predicted-y (pmm_match_type = 1) or observed-y (pmm_match_type = 2) space, and the donor outcomes are aggregated over the probability sample.\nnonprobsvy version: 0.2.3.9001  |  R: 4.4.2  |  run: 2026-05-14 06:32:26  |  commit: 03b9b08"
+    "text": "Mass imputation by predictive mean matching: a regression y ~ x1 + x2 is fit on the non-probability sample, donors are chosen by closeness in either predicted-y (pmm_match_type = 1) or observed-y (pmm_match_type = 2) space, and the donor outcomes are aggregated over the probability sample.\nnonprobsvy version: 0.2.3.9001  |  R: 4.4.2  |  run: 2026-05-14 07:01:14  |  commit: 62c764c"
   },
   {
     "objectID": "doc/mi/mi_pmm.html#notes",
@@ -144,7 +144,7 @@
     "href": "doc/mi/mi_nn.html",
     "title": "MI (nearest neighbour)",
     "section": "",
-    "text": "Mass imputation where the non-probability sample serves as the donor pool for k-nearest-neighbour imputation onto the probability sample.\nnonprobsvy version: 0.2.3.9001  |  R: 4.4.2  |  run: 2026-05-14 06:31:20  |  commit: 03b9b08"
+    "text": "Mass imputation where the non-probability sample serves as the donor pool for k-nearest-neighbour imputation onto the probability sample.\nnonprobsvy version: 0.2.3.9001  |  R: 4.4.2  |  run: 2026-05-14 06:58:28  |  commit: 62c764c"
   },
   {
     "objectID": "doc/mi/mi_nn.html#notes",
@@ -158,7 +158,7 @@
     "href": "doc/dr/dr_glm.html",
     "title": "DR (GLM outcome)",
     "section": "",
-    "text": "Doubly-robust estimator combining a logistic propensity score with a GLM outcome model. Both nuisance models are fit on x1 and x2.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 07:03:00  |  commit: 62c764c"
+    "text": "Doubly-robust estimator combining a logistic propensity score with a GLM outcome model. Both nuisance models are fit on x1 and x2.\nnonprobsvy version: 0.2.3.9001  |  R: 4.4.2  |  run: 2026-05-14 07:01:21  |  commit: 62c764c"
   },
   {
     "objectID": "doc/dr/dr_glm.html#notes",

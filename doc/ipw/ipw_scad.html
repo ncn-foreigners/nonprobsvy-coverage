@@ -207,7 +207,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>Inverse probability weighting with a penalised propensity score. The selection formula includes a redundant covariate <code>x3</code> (which the DGP does <em>not</em> use for selection); each penalty should learn to drop it.</p>
-<p><strong>nonprobsvy version:</strong> <code>0.2.3.9001</code> &nbsp;|&nbsp; <strong>R:</strong> <code>4.6.0</code> &nbsp;|&nbsp; <strong>run:</strong> <code>2026-05-14 06:42:52</code> &nbsp;|&nbsp; <strong>commit:</strong> <code>62c764c</code></p>
+<p><strong>nonprobsvy version:</strong> <code>0.2.3.9001</code> &nbsp;|&nbsp; <strong>R:</strong> <code>4.6.0</code> &nbsp;|&nbsp; <strong>run:</strong> <code>2026-05-14 07:23:01</code> &nbsp;|&nbsp; <strong>commit:</strong> <code>85ca7cd</code></p>
 <table class="table table-sm">
 <thead>
 <tr>
@@ -222,9 +222,6 @@ bias
 </th>
 <th style="text-align:center;">
 rmse
-</th>
-<th style="text-align:center;">
-mc_se
 </th>
 <th style="text-align:center;">
 mean_se
@@ -243,51 +240,45 @@ ci_width
 0.05
 </td>
 <td style="text-align:center;">
-200
+500
 </td>
 <td style="text-align:center;">
--0.117
+-0.101
 </td>
 <td style="text-align:center;">
-0.183
+0.176
 </td>
 <td style="text-align:center;">
-0.010
+0.106
+</td>
+<td style="text-align:center;">
+<span style="background:#f4c4c4;padding:2px 6px;border-radius:3px;">0.726</span>
+</td>
+<td style="text-align:center;">
+0.414
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+0.05
+</td>
+<td style="text-align:center;">
+500
+</td>
+<td style="text-align:center;">
+-0.009
+</td>
+<td style="text-align:center;">
+0.123
 </td>
 <td style="text-align:center;">
 0.108
 </td>
 <td style="text-align:center;">
-<span style="background:#f4c4c4;padding:2px 6px;border-radius:3px;">0.730</span>
+<span style="background:#f4c4c4;padding:2px 6px;border-radius:3px;">0.908</span>
 </td>
 <td style="text-align:center;">
-0.424
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-0.05
-</td>
-<td style="text-align:center;">
-200
-</td>
-<td style="text-align:center;">
--0.028
-</td>
-<td style="text-align:center;">
-0.125
-</td>
-<td style="text-align:center;">
-0.009
-</td>
-<td style="text-align:center;">
-0.111
-</td>
-<td style="text-align:center;">
-<span style="background:#ffe6b3;padding:2px 6px;border-radius:3px;">0.920</span>
-</td>
-<td style="text-align:center;">
-0.435
+0.423
 </td>
 </tr>
 <tr>
@@ -295,25 +286,22 @@ ci_width
 0.05
 </td>
 <td style="text-align:center;">
-200
+500
 </td>
 <td style="text-align:center;">
--0.040
+-0.022
 </td>
 <td style="text-align:center;">
-0.133
+0.126
 </td>
 <td style="text-align:center;">
-0.009
+0.107
 </td>
 <td style="text-align:center;">
-0.110
+<span style="background:#f4c4c4;padding:2px 6px;border-radius:3px;">0.886</span>
 </td>
 <td style="text-align:center;">
-<span style="background:#f4c4c4;padding:2px 6px;border-radius:3px;">0.890</span>
-</td>
-<td style="text-align:center;">
-0.432
+0.421
 </td>
 </tr>
 </tbody>
