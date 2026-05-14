@@ -207,7 +207,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>Mass imputation by predictive mean matching: a regression <code>y ~ x1 + x2</code> is fit on the non-probability sample, donors are chosen by closeness in either predicted-<code>y</code> (<code>pmm_match_type = 1</code>) or observed-<code>y</code> (<code>pmm_match_type = 2</code>) space, and the donor outcomes are aggregated over the probability sample.</p>
-<p><strong>nonprobsvy version:</strong> <code>0.2.3.9001</code> &nbsp;|&nbsp; <strong>R:</strong> <code>4.6.0</code> &nbsp;|&nbsp; <strong>run:</strong> <code>2026-05-14 04:09:45</code> &nbsp;|&nbsp; <strong>commit:</strong> <code>09d6897</code></p>
+<p><strong>nonprobsvy version:</strong> <code>0.2.3.9001</code> &nbsp;|&nbsp; <strong>R:</strong> <code>4.4.2</code> &nbsp;|&nbsp; <strong>run:</strong> <code>2026-05-14 06:32:26</code> &nbsp;|&nbsp; <strong>commit:</strong> <code>03b9b08</code></p>
 <table class="table table-sm">
 <thead>
 <tr>
@@ -219,12 +219,6 @@ n_reps
 </th>
 <th style="text-align:center;">
 bias
-</th>
-<th style="text-align:center;">
-rmse
-</th>
-<th style="text-align:center;">
-mc_se
 </th>
 <th style="text-align:center;">
 mean_se
@@ -243,22 +237,16 @@ ci_width
 0.05
 </td>
 <td style="text-align:center;">
-50
+200
 </td>
 <td style="text-align:center;">
--0.008
-</td>
-<td style="text-align:center;">
-0.085
-</td>
-<td style="text-align:center;">
-0.012
+0.008
 </td>
 <td style="text-align:center;">
 0.053
 </td>
 <td style="text-align:center;">
-<span style="background:#f4c4c4;padding:2px 6px;border-radius:3px;">0.780</span>
+<span style="background:#f4c4c4;padding:2px 6px;border-radius:3px;">0.855</span>
 </td>
 <td style="text-align:center;">
 0.209
@@ -269,25 +257,19 @@ ci_width
 0.05
 </td>
 <td style="text-align:center;">
-50
+200
 </td>
 <td style="text-align:center;">
--0.017
-</td>
-<td style="text-align:center;">
-0.088
-</td>
-<td style="text-align:center;">
-0.013
+-0.001
 </td>
 <td style="text-align:center;">
 0.050
 </td>
 <td style="text-align:center;">
-<span style="background:#f4c4c4;padding:2px 6px;border-radius:3px;">0.720</span>
+<span style="background:#f4c4c4;padding:2px 6px;border-radius:3px;">0.815</span>
 </td>
 <td style="text-align:center;">
-0.194
+0.196
 </td>
 </tr>
 </tbody>
