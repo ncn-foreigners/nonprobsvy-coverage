@@ -1,5 +1,33 @@
 [
   {
+    "objectID": "doc/mi/mi_npar.html",
+    "href": "doc/mi/mi_npar.html",
+    "title": "MI (nonparametric / loess)",
+    "section": "",
+    "text": "Mass imputation with a nonparametric (loess) outcome model. Only a small number of covariates is supported by nonprobsvy; here we fit y ~ x1 + x2.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 04:09:23  |  commit: 09d6897"
+  },
+  {
+    "objectID": "doc/mi/mi_npar.html#notes",
+    "href": "doc/mi/mi_npar.html#notes",
+    "title": "MI (nonparametric / loess)",
+    "section": "Notes",
+    "text": "Notes\n\nDGP: default.\nAnalytical SE for loess-based MI uses an asymptotic linearisation that, like the NN/PMM variants, doesn’t fully account for smoothing-window variability. Bootstrap is the safer choice for honest inference."
+  },
+  {
+    "objectID": "doc/mi/mi_glm.html",
+    "href": "doc/mi/mi_glm.html",
+    "title": "MI (GLM)",
+    "section": "",
+    "text": "Mass imputation with a GLM outcome model. The non-probability sample fits y ~ x1 + x2 and the predictions are aggregated over the probability sample.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 04:09:19  |  commit: 09d6897"
+  },
+  {
+    "objectID": "doc/mi/mi_glm.html#notes",
+    "href": "doc/mi/mi_glm.html#notes",
+    "title": "MI (GLM)",
+    "section": "Notes",
+    "text": "Notes\n\nDGP: default (linear outcome, y = 1 + x1 + 0.5 x2 - 0.3 x3 + N(0,1)).\nThe outcome model is correctly specified for this DGP.\nAnalytical SE for GLM-based MI uses the standard linearisation argument and should yield well-calibrated CIs at the nominal level."
+  },
+  {
     "objectID": "doc/ipw/ipw_scad.html",
     "href": "doc/ipw/ipw_scad.html",
     "title": "IPW (variable selection: SCAD / lasso / MCP)",
@@ -82,5 +110,33 @@
     "title": "IPW (MLE)",
     "section": "Notes",
     "text": "Notes\n\nDGP: linear outcome y = 1 + x1 + 0.5 x2 - 0.3 x3 + N(0, 1) with logistic selection biased by x1 and x2. True target is the population mean of y.\nThe MC SE of the point estimate is reported next to each cell — it bounds how precisely we can pin down the empirical coverage.\nBootstrap variants and the full estimator × DGP matrix will be added in subsequent passes."
+  },
+  {
+    "objectID": "doc/mi/mi_pmm.html",
+    "href": "doc/mi/mi_pmm.html",
+    "title": "MI (predictive mean matching)",
+    "section": "",
+    "text": "Mass imputation by predictive mean matching: a regression y ~ x1 + x2 is fit on the non-probability sample, donors are chosen by closeness in either predicted-y (pmm_match_type = 1) or observed-y (pmm_match_type = 2) space, and the donor outcomes are aggregated over the probability sample.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 04:09:45  |  commit: 09d6897"
+  },
+  {
+    "objectID": "doc/mi/mi_pmm.html#notes",
+    "href": "doc/mi/mi_pmm.html#notes",
+    "title": "MI (predictive mean matching)",
+    "section": "Notes",
+    "text": "Notes\n\nDGP: default.\nAnalytical SE typically under-states the variance for PMM for the same reason as NN imputation — donor selection variability is unmodelled.\nSweeps pmm_match_type ∈ {1, 2} at k = 5."
+  },
+  {
+    "objectID": "doc/mi/mi_nn.html",
+    "href": "doc/mi/mi_nn.html",
+    "title": "MI (nearest neighbour)",
+    "section": "",
+    "text": "Mass imputation where the non-probability sample serves as the donor pool for k-nearest-neighbour imputation onto the probability sample.\nnonprobsvy version: 0.2.3.9001  |  R: 4.6.0  |  run: 2026-05-14 04:09:43  |  commit: 09d6897"
+  },
+  {
+    "objectID": "doc/mi/mi_nn.html#notes",
+    "href": "doc/mi/mi_nn.html#notes",
+    "title": "MI (nearest neighbour)",
+    "section": "Notes",
+    "text": "Notes\n\nDGP: default.\nThe analytical SE for NN-imputation does not account for the additional variability introduced by the donor selection step. Expect under-coverage; bootstrap variance is the recommended remedy.\nSweeps k = 1 and k = 5."
   }
 ]

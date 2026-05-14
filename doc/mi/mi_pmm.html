@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>IPW (variable selection: SCAD / lasso / MCP) – nonprobsvy Coverage</title>
+<title>MI (predictive mean matching) – nonprobsvy Coverage</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -167,14 +167,14 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#notes" id="toc-notes" class="nav-link active" data-scroll-target="#notes">Notes</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/ncn-foreigners/nonprobsvy-coverage/edit/main/doc/ipw/ipw_scad.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ncn-foreigners/nonprobsvy-coverage/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/ncn-foreigners/nonprobsvy-coverage/edit/main/doc/mi/mi_pmm.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ncn-foreigners/nonprobsvy-coverage/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">IPW (variable selection: SCAD / lasso / MCP)</h1>
+<h1 class="title">MI (predictive mean matching)</h1>
 </div>
 
 
@@ -191,8 +191,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Inverse probability weighting with a penalised propensity score. The selection formula includes a redundant covariate <code>x3</code> (which the DGP does <em>not</em> use for selection); each penalty should learn to drop it.</p>
-<p><strong>nonprobsvy version:</strong> <code>0.2.3.9001</code> &nbsp;|&nbsp; <strong>R:</strong> <code>4.6.0</code> &nbsp;|&nbsp; <strong>run:</strong> <code>2026-05-13 20:41:00</code> &nbsp;|&nbsp; <strong>commit:</strong> <code>6992e1b</code></p>
+<p>Mass imputation by predictive mean matching: a regression <code>y ~ x1 + x2</code> is fit on the non-probability sample, donors are chosen by closeness in either predicted-<code>y</code> (<code>pmm_match_type = 1</code>) or observed-<code>y</code> (<code>pmm_match_type = 2</code>) space, and the donor outcomes are aggregated over the probability sample.</p>
+<p><strong>nonprobsvy version:</strong> <code>0.2.3.9001</code> &nbsp;|&nbsp; <strong>R:</strong> <code>4.6.0</code> &nbsp;|&nbsp; <strong>run:</strong> <code>2026-05-14 04:09:45</code> &nbsp;|&nbsp; <strong>commit:</strong> <code>09d6897</code></p>
 <table class="table table-sm">
 <thead>
 <tr>
@@ -228,51 +228,25 @@ ci_width
 0.05
 </td>
 <td style="text-align:center;">
-30
+50
 </td>
 <td style="text-align:center;">
--0.089
+-0.008
 </td>
 <td style="text-align:center;">
-0.176
+0.085
 </td>
 <td style="text-align:center;">
-0.029
+0.012
 </td>
 <td style="text-align:center;">
-0.110
+0.053
 </td>
 <td style="text-align:center;">
-<span style="background:#f4c4c4;padding:2px 6px;border-radius:3px;">0.700</span>
+<span style="background:#f4c4c4;padding:2px 6px;border-radius:3px;">0.780</span>
 </td>
 <td style="text-align:center;">
-0.430
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-0.05
-</td>
-<td style="text-align:center;">
-30
-</td>
-<td style="text-align:center;">
--0.037
-</td>
-<td style="text-align:center;">
-0.135
-</td>
-<td style="text-align:center;">
-0.026
-</td>
-<td style="text-align:center;">
-0.111
-</td>
-<td style="text-align:center;">
-<span style="background:#ffe6b3;padding:2px 6px;border-radius:3px;">0.867</span>
-</td>
-<td style="text-align:center;">
-0.435
+0.209
 </td>
 </tr>
 <tr>
@@ -280,25 +254,25 @@ ci_width
 0.05
 </td>
 <td style="text-align:center;">
-30
+50
 </td>
 <td style="text-align:center;">
--0.033
+-0.017
 </td>
 <td style="text-align:center;">
-0.136
+0.088
 </td>
 <td style="text-align:center;">
-0.026
+0.013
 </td>
 <td style="text-align:center;">
-0.111
+0.050
 </td>
 <td style="text-align:center;">
-<span style="background:#ffe6b3;padding:2px 6px;border-radius:3px;">0.867</span>
+<span style="background:#f4c4c4;padding:2px 6px;border-radius:3px;">0.720</span>
 </td>
 <td style="text-align:center;">
-0.433
+0.194
 </td>
 </tr>
 </tbody>
@@ -306,9 +280,9 @@ ci_width
 <section id="notes" class="level2">
 <h2 class="anchored" data-anchor-id="notes">Notes</h2>
 <ul>
-<li>DGP: <code>default</code> with selection formula <code>~ x1 + x2 + x3</code>. True selection uses only <code>x1</code> and <code>x2</code>, so <code>x3</code> is the noise variable.</li>
-<li><code>n_reps</code> is intentionally smaller here (30) because each replicate runs cross-validation inside <code>control_sel(penalty = ...)</code>. MC SE is correspondingly larger — read the table accordingly.</li>
-<li>Coverage differences across SCAD, lasso, and MCP largely come from how aggressively each penalty zeros out the noise coefficient.</li>
+<li>DGP: <code>default</code>.</li>
+<li>Analytical SE typically under-states the variance for PMM for the same reason as NN imputation — donor selection variability is unmodelled.</li>
+<li>Sweeps <code>pmm_match_type ∈ {1, 2}</code> at <code>k = 5</code>.</li>
 </ul>
 
 
@@ -723,7 +697,7 @@ ci_width
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ncn-foreigners/nonprobsvy-coverage/edit/main/doc/ipw/ipw_scad.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ncn-foreigners/nonprobsvy-coverage/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ncn-foreigners/nonprobsvy-coverage/edit/main/doc/mi/mi_pmm.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ncn-foreigners/nonprobsvy-coverage/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>NCN OPUS 20 grant no. 2020/39/B/HS4/00941</p>
 </div>
