@@ -1,2 +1,2 @@
 script,estimator,dgp,n_cells,total_runtime_sec,workers,nonprobsvy_version,r_version,platform,commit_sha,run_date
-mi_npar_boot,mi,default,1,139.191291809082,3,0.2.3.9001,4.4.2,aarch64-apple-darwin20,2d7b79a,2026-05-14T08:28:07Z
+mi_npar_boot,mi,default,1,216.354345083237,2,0.2.3.9001,4.6.0,x86_64-pc-linux-gnu,b475b7d,2026-05-17T07:59:40Z
