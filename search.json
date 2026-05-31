@@ -1,24 +1,10 @@
 [
   {
-    "objectID": "doc/ipw/ipw_scad.html",
-    "href": "doc/ipw/ipw_scad.html",
-    "title": "IPW (variable selection: SCAD / lasso / MCP)",
-    "section": "",
-    "text": "Inverse probability weighting with a penalised propensity score. The selection formula includes a redundant covariate x3 (which the DGP does not use for selection); each penalty should learn to drop it.\nnonprobsvy version: 0.3.0  |  R: 4.6.0  |  run: 2026-05-24 07:54:24  |  commit: 4b2ba9a"
-  },
-  {
-    "objectID": "doc/ipw/ipw_scad.html#notes",
-    "href": "doc/ipw/ipw_scad.html#notes",
-    "title": "IPW (variable selection: SCAD / lasso / MCP)",
-    "section": "Notes",
-    "text": "Notes\n\nDGP: default with selection formula ~ x1 + x2 + x3. True selection uses only x1 and x2, so x3 is the noise variable.\nEach replicate runs cross-validation inside control_sel(penalty = ...), which makes this script slower per replicate than the unpenalised IPW variants.\nCoverage differences across SCAD, lasso, and MCP largely come from how aggressively each penalty zeros out the noise coefficient."
-  },
-  {
     "objectID": "doc/ipw/ipw_kim2021.html",
     "href": "doc/ipw/ipw_kim2021.html",
     "title": "IPW (MLE) on the Kim et al. (2021) DGP",
     "section": "",
-    "text": "Inverse probability weighting (MLE) on the data-generating process from Kim, Park, Chen & Wu (2021), JRSSA 184(3). The DGP draws x ~ N(2, 1) and three outcomes constructed so that all three have theoretical population mean 5. The non-probability sample oversamples the lower tail of x (70% from strata == TRUE, 30% from strata == FALSE).\nnonprobsvy version: 0.3.0  |  R: 4.6.0  |  run: 2026-05-24 08:12:39  |  commit: 4b2ba9a"
+    "text": "Inverse probability weighting (MLE) on the data-generating process from Kim, Park, Chen & Wu (2021), JRSSA 184(3). The DGP draws x ~ N(2, 1) and three outcomes constructed so that all three have theoretical population mean 5. The non-probability sample oversamples the lower tail of x (70% from strata == TRUE, 30% from strata == FALSE).\nnonprobsvy version: 0.3.0  |  R: 4.6.0  |  run: 2026-05-31 08:38:33  |  commit: f93fca1"
   },
   {
     "objectID": "doc/ipw/ipw_kim2021.html#notes",
@@ -28,67 +14,32 @@
     "text": "Notes\n\ny1 = 1 + 2 x + e is linear in x — the propensity model is correctly specified for this outcome.\ny2 = 3 + x + 2 e is also linear in x but with a different scale.\ny3 = 2.5 + 0.5 x^2 + e is non-linear in x. The propensity adjustment still corrects the design bias, but residual coverage behaviour can differ — see the rows.\n\nSource: ncn-foreigners/software-tutorials/codes/2021-kim-et-al-jrssa.R."
   },
   {
-    "objectID": "doc/dr/dr_glm.html",
-    "href": "doc/dr/dr_glm.html",
-    "title": "DR (GLM outcome)",
+    "objectID": "doc/ipw/ipw_gee.html",
+    "href": "doc/ipw/ipw_gee.html",
+    "title": "IPW (GEE calibration)",
     "section": "",
-    "text": "Doubly-robust estimator combining a logistic propensity score with a GLM outcome model. Both nuisance models are fit on x1 and x2.\nnonprobsvy version: 0.3.0  |  R: 4.6.0  |  run: 2026-05-24 08:46:46  |  commit: ec5beda"
+    "text": "Inverse probability weighting where the propensity score parameters solve a generalised estimating equation (calibration-style constraints) rather than the maximum-likelihood score. Both smoothing variants from the literature are shown — gee_h_fun = 1 (logarithmic) and gee_h_fun = 2 (exponential).\nnonprobsvy version: 0.3.0  |  R: 4.6.0  |  run: 2026-05-31 08:33:02  |  commit: f93fca1"
   },
   {
-    "objectID": "doc/dr/dr_glm.html#notes",
-    "href": "doc/dr/dr_glm.html#notes",
-    "title": "DR (GLM outcome)",
+    "objectID": "doc/ipw/ipw_gee.html#notes",
+    "href": "doc/ipw/ipw_gee.html#notes",
+    "title": "IPW (GEE calibration)",
     "section": "Notes",
-    "text": "Notes\n\nDGP: default.\nBias is small (DR’s claim to fame), but the analytical SE is conservative relative to the empirical sd of the point estimates — leading to over-coverage. Bootstrap variance is the recommended remedy.\nbias_correction = TRUE (the joint-estimating-equations variant) is currently unavailable on the dev branch of nonprobsvy due to an upstream bug; once fixed, a dr_bias_corr.R script will be added here."
+    "text": "Notes\n\nDGP: the same simple default DGP used for the MLE table (linear outcome, logistic selection on x1 and x2).\nCompared to MLE, GEE typically gives slightly wider CIs because it solves a constraint system rather than maximising likelihood; that often translates into over-coverage."
   },
   {
-    "objectID": "doc/mi/mi_npar.html",
-    "href": "doc/mi/mi_npar.html",
-    "title": "MI (nonparametric / loess)",
+    "objectID": "doc/dr/dr_scad.html",
+    "href": "doc/dr/dr_scad.html",
+    "title": "DR (variable selection: SCAD / lasso / MCP)",
     "section": "",
-    "text": "Mass imputation with a nonparametric (loess) outcome model. Only a small number of covariates is supported by nonprobsvy; here we fit y ~ x1 + x2.\nnonprobsvy version: 0.3.0  |  R: 4.6.0  |  run: 2026-05-24 08:05:57  |  commit: 4b2ba9a"
+    "text": "Doubly-robust estimator with penalised nuisance models on both sides: the propensity score and the outcome regression each carry the same penalty and a redundant covariate x3 that the DGP doesn’t actually use.\nnonprobsvy version: 0.3.0  |  R: 4.6.0  |  run: 2026-05-24 08:26:03  |  commit: ec5beda"
   },
   {
-    "objectID": "doc/mi/mi_npar.html#notes",
-    "href": "doc/mi/mi_npar.html#notes",
-    "title": "MI (nonparametric / loess)",
+    "objectID": "doc/dr/dr_scad.html#notes",
+    "href": "doc/dr/dr_scad.html#notes",
+    "title": "DR (variable selection: SCAD / lasso / MCP)",
     "section": "Notes",
-    "text": "Notes\n\nDGP: default.\nAnalytical SE for loess-based MI uses an asymptotic linearisation that, like the NN/PMM variants, doesn’t fully account for smoothing-window variability. Bootstrap is the safer choice for honest inference."
-  },
-  {
-    "objectID": "doc/mi/mi_nn.html",
-    "href": "doc/mi/mi_nn.html",
-    "title": "MI (nearest neighbour)",
-    "section": "",
-    "text": "Mass imputation where the non-probability sample serves as the donor pool for k-nearest-neighbour imputation onto the probability sample.\nnonprobsvy version: 0.3.0  |  R: 4.6.0  |  run: 2026-05-24 08:08:12  |  commit: 4b2ba9a"
-  },
-  {
-    "objectID": "doc/mi/mi_nn.html#notes",
-    "href": "doc/mi/mi_nn.html#notes",
-    "title": "MI (nearest neighbour)",
-    "section": "Notes",
-    "text": "Notes\n\nDGP: default.\nThe analytical SE for NN-imputation does not account for the additional variability introduced by the donor selection step. Expect under-coverage; bootstrap variance is the recommended remedy.\nSweeps k = 1 and k = 5."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "nonprobsvy Coverage",
-    "section": "",
-    "text": "Empirical evidence that the confidence intervals produced by the nonprobsvy R package achieve their nominal coverage levels under the data-generating processes from the methods literature. Modeled after doubleml-coverage.\nEvery coverage table on this site is computed automatically by GitHub Actions and updated whenever the package or this repo’s simulation code changes."
-  },
-  {
-    "objectID": "index.html#what-this-is",
-    "href": "index.html#what-this-is",
-    "title": "nonprobsvy Coverage",
-    "section": "",
-    "text": "Empirical evidence that the confidence intervals produced by the nonprobsvy R package achieve their nominal coverage levels under the data-generating processes from the methods literature. Modeled after doubleml-coverage.\nEvery coverage table on this site is computed automatically by GitHub Actions and updated whenever the package or this repo’s simulation code changes."
-  },
-  {
-    "objectID": "index.html#how-to-read-the-tables",
-    "href": "index.html#how-to-read-the-tables",
-    "title": "nonprobsvy Coverage",
-    "section": "How to read the tables",
-    "text": "How to read the tables\nEach row is one parameter cell — one combination of sample sizes, link function, penalty, variance method, etc. The columns that vary across rows (e.g. penalty for SCAD/lasso/MCP, k for nearest-neighbour, var_method for analytic vs bootstrap) are shown on the left of the table; columns that are constant across the whole table are hidden.\n\nWhat the numbers mean\n\nn_reps — how many Monte Carlo replicates produced this row.\nbias — mean of point estimate − true population mean. Closer to zero is better.\nrmse — root mean squared error of the point estimate.\nmc_se — Monte Carlo standard error of the point estimate itself (≈ sd(point) / sqrt(n_reps)). Captures how precisely the simulation pins down the bias and coverage values.\nmean_se — mean of the estimator’s reported standard error across replicates. The estimator is well-calibrated when mean_se ≈ mc_se × sqrt(n_reps) (the empirical sd of the point estimates).\ncoverage — proportion of replicates whose confidence interval contained the true population mean. This is the headline.\nci_width — mean width of the confidence interval.\n\n\n\nWhat the cell colors mean\nA coverage estimate from n_reps simulations isn’t infinitely precise — it has its own Monte Carlo SE of sqrt(p(1-p) / n_reps) (about 0.010 at p = 0.95 with n_reps = 500). The color compares the gap between empirical and nominal coverage to that Monte Carlo SE:\n\ngreen — the gap is within 1 × MC SE. The estimator looks correctly calibrated; any residual gap is consistent with simulation noise.\namber — gap is between 1 and 2 × MC SE. Borderline; could plausibly be either real miscalibration or sampling noise. Worth re-running with more replicates to disambiguate.\nred — gap is more than 2 × MC SE. Almost certainly real miscalibration, not simulation noise. Under-coverage (red and low) means the CI is too narrow; over-coverage (red and high, e.g. 1.000) means the CI is too wide / conservative.\n\nConcrete examples: at n_reps = 500 and α = 0.05 (nominal coverage 0.95, MC SE ≈ 0.010):\n\n0.945 → green (gap 0.005, within 1 MC SE)\n0.930 → amber (gap 0.020, between 1 and 2 MC SE)\n0.890 → red (gap 0.060, beyond 2 MC SE → CI too narrow)\n1.000 → red (gap 0.050, beyond 2 MC SE → CI too wide)\n\n\n\nHeader\nThe header above each table shows the version of nonprobsvy that produced the numbers, the R version, the wall-clock run time and the git commit — full provenance for every cell."
+    "text": "Notes\n\nDGP: default with ~ x1 + x2 + x3 on both selection and outcome.\nLike dr_glm, the analytical SE here is conservative — over-coverage at the 5% level is the expected pattern. Coverage typically settles closer to nominal under bootstrap.\nBoth penalised models run cross-validation inside each replicate, which makes this script slower per replicate than the unpenalised DR variant."
   },
   {
     "objectID": "doc/mi/mi_glm.html",
@@ -119,39 +70,88 @@
     "text": "Notes\n\nDGP: default.\nAnalytical SE typically under-states the variance for PMM for the same reason as NN imputation — donor selection variability is unmodelled.\nSweeps pmm_match_type ∈ {1, 2} at k = 5."
   },
   {
-    "objectID": "doc/dr/dr_scad.html",
-    "href": "doc/dr/dr_scad.html",
-    "title": "DR (variable selection: SCAD / lasso / MCP)",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "nonprobsvy Coverage",
     "section": "",
-    "text": "Doubly-robust estimator with penalised nuisance models on both sides: the propensity score and the outcome regression each carry the same penalty and a redundant covariate x3 that the DGP doesn’t actually use.\nnonprobsvy version: 0.3.0  |  R: 4.6.0  |  run: 2026-05-24 08:26:03  |  commit: ec5beda"
+    "text": "Empirical evidence that the confidence intervals produced by the nonprobsvy R package achieve their nominal coverage levels under the data-generating processes from the methods literature. Modeled after doubleml-coverage.\nEvery coverage table on this site is computed automatically by GitHub Actions and updated whenever the package or this repo’s simulation code changes."
   },
   {
-    "objectID": "doc/dr/dr_scad.html#notes",
-    "href": "doc/dr/dr_scad.html#notes",
-    "title": "DR (variable selection: SCAD / lasso / MCP)",
-    "section": "Notes",
-    "text": "Notes\n\nDGP: default with ~ x1 + x2 + x3 on both selection and outcome.\nLike dr_glm, the analytical SE here is conservative — over-coverage at the 5% level is the expected pattern. Coverage typically settles closer to nominal under bootstrap.\nBoth penalised models run cross-validation inside each replicate, which makes this script slower per replicate than the unpenalised DR variant."
-  },
-  {
-    "objectID": "doc/ipw/ipw_gee.html",
-    "href": "doc/ipw/ipw_gee.html",
-    "title": "IPW (GEE calibration)",
+    "objectID": "index.html#what-this-is",
+    "href": "index.html#what-this-is",
+    "title": "nonprobsvy Coverage",
     "section": "",
-    "text": "Inverse probability weighting where the propensity score parameters solve a generalised estimating equation (calibration-style constraints) rather than the maximum-likelihood score. Both smoothing variants from the literature are shown — gee_h_fun = 1 (logarithmic) and gee_h_fun = 2 (exponential).\nnonprobsvy version: 0.3.0  |  R: 4.6.0  |  run: 2026-05-24 08:07:58  |  commit: 4b2ba9a"
+    "text": "Empirical evidence that the confidence intervals produced by the nonprobsvy R package achieve their nominal coverage levels under the data-generating processes from the methods literature. Modeled after doubleml-coverage.\nEvery coverage table on this site is computed automatically by GitHub Actions and updated whenever the package or this repo’s simulation code changes."
   },
   {
-    "objectID": "doc/ipw/ipw_gee.html#notes",
-    "href": "doc/ipw/ipw_gee.html#notes",
-    "title": "IPW (GEE calibration)",
+    "objectID": "index.html#how-to-read-the-tables",
+    "href": "index.html#how-to-read-the-tables",
+    "title": "nonprobsvy Coverage",
+    "section": "How to read the tables",
+    "text": "How to read the tables\nEach row is one parameter cell — one combination of sample sizes, link function, penalty, variance method, etc. The columns that vary across rows (e.g. penalty for SCAD/lasso/MCP, k for nearest-neighbour, var_method for analytic vs bootstrap) are shown on the left of the table; columns that are constant across the whole table are hidden.\n\nWhat the numbers mean\n\nn_reps — how many Monte Carlo replicates produced this row.\nbias — mean of point estimate − true population mean. Closer to zero is better.\nrmse — root mean squared error of the point estimate.\nmc_se — Monte Carlo standard error of the point estimate itself (≈ sd(point) / sqrt(n_reps)). Captures how precisely the simulation pins down the bias and coverage values.\nmean_se — mean of the estimator’s reported standard error across replicates. The estimator is well-calibrated when mean_se ≈ mc_se × sqrt(n_reps) (the empirical sd of the point estimates).\ncoverage — proportion of replicates whose confidence interval contained the true population mean. This is the headline.\nci_width — mean width of the confidence interval.\n\n\n\nWhat the cell colors mean\nA coverage estimate from n_reps simulations isn’t infinitely precise — it has its own Monte Carlo SE of sqrt(p(1-p) / n_reps) (about 0.010 at p = 0.95 with n_reps = 500). The color compares the gap between empirical and nominal coverage to that Monte Carlo SE:\n\ngreen — the gap is within 1 × MC SE. The estimator looks correctly calibrated; any residual gap is consistent with simulation noise.\namber — gap is between 1 and 2 × MC SE. Borderline; could plausibly be either real miscalibration or sampling noise. Worth re-running with more replicates to disambiguate.\nred — gap is more than 2 × MC SE. Almost certainly real miscalibration, not simulation noise. Under-coverage (red and low) means the CI is too narrow; over-coverage (red and high, e.g. 1.000) means the CI is too wide / conservative.\n\nConcrete examples: at n_reps = 500 and α = 0.05 (nominal coverage 0.95, MC SE ≈ 0.010):\n\n0.945 → green (gap 0.005, within 1 MC SE)\n0.930 → amber (gap 0.020, between 1 and 2 MC SE)\n0.890 → red (gap 0.060, beyond 2 MC SE → CI too narrow)\n1.000 → red (gap 0.050, beyond 2 MC SE → CI too wide)\n\n\n\nHeader\nThe header above each table shows the version of nonprobsvy that produced the numbers, the R version, the wall-clock run time and the git commit — full provenance for every cell."
+  },
+  {
+    "objectID": "doc/mi/mi_npar.html",
+    "href": "doc/mi/mi_npar.html",
+    "title": "MI (nonparametric / loess)",
+    "section": "",
+    "text": "Mass imputation with a nonparametric (loess) outcome model. Only a small number of covariates is supported by nonprobsvy; here we fit y ~ x1 + x2.\nnonprobsvy version: 0.3.0  |  R: 4.6.0  |  run: 2026-05-24 08:05:57  |  commit: 4b2ba9a"
+  },
+  {
+    "objectID": "doc/mi/mi_npar.html#notes",
+    "href": "doc/mi/mi_npar.html#notes",
+    "title": "MI (nonparametric / loess)",
     "section": "Notes",
-    "text": "Notes\n\nDGP: the same simple default DGP used for the MLE table (linear outcome, logistic selection on x1 and x2).\nCompared to MLE, GEE typically gives slightly wider CIs because it solves a constraint system rather than maximising likelihood; that often translates into over-coverage."
+    "text": "Notes\n\nDGP: default.\nAnalytical SE for loess-based MI uses an asymptotic linearisation that, like the NN/PMM variants, doesn’t fully account for smoothing-window variability. Bootstrap is the safer choice for honest inference."
+  },
+  {
+    "objectID": "doc/mi/mi_nn.html",
+    "href": "doc/mi/mi_nn.html",
+    "title": "MI (nearest neighbour)",
+    "section": "",
+    "text": "Mass imputation where the non-probability sample serves as the donor pool for k-nearest-neighbour imputation onto the probability sample.\nnonprobsvy version: 0.3.0  |  R: 4.6.0  |  run: 2026-05-24 08:08:12  |  commit: 4b2ba9a"
+  },
+  {
+    "objectID": "doc/mi/mi_nn.html#notes",
+    "href": "doc/mi/mi_nn.html#notes",
+    "title": "MI (nearest neighbour)",
+    "section": "Notes",
+    "text": "Notes\n\nDGP: default.\nThe analytical SE for NN-imputation does not account for the additional variability introduced by the donor selection step. Expect under-coverage; bootstrap variance is the recommended remedy.\nSweeps k = 1 and k = 5."
+  },
+  {
+    "objectID": "doc/dr/dr_glm.html",
+    "href": "doc/dr/dr_glm.html",
+    "title": "DR (GLM outcome)",
+    "section": "",
+    "text": "Doubly-robust estimator combining a logistic propensity score with a GLM outcome model. Both nuisance models are fit on x1 and x2.\nnonprobsvy version: 0.3.0  |  R: 4.6.0  |  run: 2026-05-24 08:46:46  |  commit: ec5beda"
+  },
+  {
+    "objectID": "doc/dr/dr_glm.html#notes",
+    "href": "doc/dr/dr_glm.html#notes",
+    "title": "DR (GLM outcome)",
+    "section": "Notes",
+    "text": "Notes\n\nDGP: default.\nBias is small (DR’s claim to fame), but the analytical SE is conservative relative to the empirical sd of the point estimates — leading to over-coverage. Bootstrap variance is the recommended remedy.\nbias_correction = TRUE (the joint-estimating-equations variant) is currently unavailable on the dev branch of nonprobsvy due to an upstream bug; once fixed, a dr_bias_corr.R script will be added here."
+  },
+  {
+    "objectID": "doc/ipw/ipw_scad.html",
+    "href": "doc/ipw/ipw_scad.html",
+    "title": "IPW (variable selection: SCAD / lasso / MCP)",
+    "section": "",
+    "text": "Inverse probability weighting with a penalised propensity score. The selection formula includes a redundant covariate x3 (which the DGP does not use for selection); each penalty should learn to drop it.\nnonprobsvy version: 0.3.0  |  R: 4.6.0  |  run: 2026-05-31 08:19:45  |  commit: f93fca1"
+  },
+  {
+    "objectID": "doc/ipw/ipw_scad.html#notes",
+    "href": "doc/ipw/ipw_scad.html#notes",
+    "title": "IPW (variable selection: SCAD / lasso / MCP)",
+    "section": "Notes",
+    "text": "Notes\n\nDGP: default with selection formula ~ x1 + x2 + x3. True selection uses only x1 and x2, so x3 is the noise variable.\nEach replicate runs cross-validation inside control_sel(penalty = ...), which makes this script slower per replicate than the unpenalised IPW variants.\nCoverage differences across SCAD, lasso, and MCP largely come from how aggressively each penalty zeros out the noise coefficient."
   },
   {
     "objectID": "doc/ipw/ipw_mle.html",
     "href": "doc/ipw/ipw_mle.html",
     "title": "IPW (MLE)",
     "section": "",
-    "text": "Empirical coverage of the inverse probability weighting estimator with the propensity score fit by maximum likelihood. Spike scope: one DGP (default), logit link, analytical variance.\nnonprobsvy version: 0.3.0  |  R: 4.6.0  |  run: 2026-05-24 07:58:26  |  commit: 4b2ba9a"
+    "text": "Empirical coverage of the inverse probability weighting estimator with the propensity score fit by maximum likelihood. Spike scope: one DGP (default), logit link, analytical variance.\nnonprobsvy version: 0.3.0  |  R: 4.6.0  |  run: 2026-05-31 08:23:39  |  commit: f93fca1"
   },
   {
     "objectID": "doc/ipw/ipw_mle.html#notes",
