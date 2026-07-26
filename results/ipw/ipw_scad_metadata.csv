@@ -1,2 +1,2 @@
 script,estimator,dgp,n_cells,total_runtime_sec,workers,nonprobsvy_version,r_version,platform,commit_sha,run_date
-ipw_scad,ipw,default,3,146.018479347229,2,0.3.0,4.6.1,x86_64-pc-linux-gnu,ad191ae,2026-07-19T07:32:09Z
+ipw_scad,ipw,default,3,144.8540995121,2,0.3.0,4.6.1,x86_64-pc-linux-gnu,836beb5,2026-07-26T07:41:30Z
