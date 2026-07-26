@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -39,10 +42,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-742d604b3b384e377e136731628de535.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-780b1d1b6a046e2bce6561903835f428.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -207,7 +210,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>Inverse probability weighting (MLE) on the data-generating process from Kim, Park, Chen &amp; Wu (2021), <em>JRSSA</em> 184(3). The DGP draws <code>x ~ N(2, 1)</code> and three outcomes constructed so that all three have theoretical population mean 5. The non-probability sample oversamples the lower tail of <code>x</code> (70% from <code>strata == TRUE</code>, 30% from <code>strata == FALSE</code>).</p>
-<p><strong>nonprobsvy version:</strong> <code>0.3.0</code> &nbsp;|&nbsp; <strong>R:</strong> <code>4.6.1</code> &nbsp;|&nbsp; <strong>run:</strong> <code>2026-07-19 07:51:45</code> &nbsp;|&nbsp; <strong>commit:</strong> <code>ad191ae</code></p>
+<p><strong>nonprobsvy version:</strong> <code>0.3.0</code> &nbsp;|&nbsp; <strong>R:</strong> <code>4.6.1</code> &nbsp;|&nbsp; <strong>run:</strong> <code>2026-07-26 08:00:10</code> &nbsp;|&nbsp; <strong>commit:</strong> <code>836beb5</code></p>
 <table class="table table-sm">
 <thead>
 <tr>
