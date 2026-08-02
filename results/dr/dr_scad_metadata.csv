@@ -1,2 +1,2 @@
 script,estimator,dgp,n_cells,total_runtime_sec,workers,nonprobsvy_version,r_version,platform,commit_sha,run_date
-dr_scad,dr,default,3,157.316495418549,2,0.3.0,4.6.1,x86_64-pc-linux-gnu,37e08cc,2026-07-26T08:17:37Z
+dr_scad,dr,default,3,157.535007238388,2,0.3.0,4.6.1,x86_64-pc-linux-gnu,a883d5d,2026-08-02T08:25:46Z
