@@ -35,34 +35,6 @@
     "text": "Notes\n\nDGP: default.\nBias is small (DR’s claim to fame), but the analytical SE is conservative relative to the empirical sd of the point estimates — leading to over-coverage. Bootstrap variance is the recommended remedy.\nbias_correction = TRUE (the joint-estimating-equations variant) is currently unavailable on the dev branch of nonprobsvy due to an upstream bug; once fixed, a dr_bias_corr.R script will be added here."
   },
   {
-    "objectID": "doc/ipw/ipw_mle.html",
-    "href": "doc/ipw/ipw_mle.html",
-    "title": "IPW (MLE)",
-    "section": "",
-    "text": "Empirical coverage of the inverse probability weighting estimator with the propensity score fit by maximum likelihood. Spike scope: one DGP (default), logit link, analytical variance.\nnonprobsvy version: 0.3.0  |  R: 4.6.1  |  run: 2026-08-09 05:55:01  |  commit: 1f2a799"
-  },
-  {
-    "objectID": "doc/ipw/ipw_mle.html#notes",
-    "href": "doc/ipw/ipw_mle.html#notes",
-    "title": "IPW (MLE)",
-    "section": "Notes",
-    "text": "Notes\n\nDGP: linear outcome y = 1 + x1 + 0.5 x2 - 0.3 x3 + N(0, 1) with logistic selection biased by x1 and x2. True target is the population mean of y.\nThe MC SE of the point estimate is reported next to each cell — it bounds how precisely we can pin down the empirical coverage.\nBootstrap variants and the full estimator × DGP matrix will be added in subsequent passes."
-  },
-  {
-    "objectID": "doc/ipw/ipw_gee.html",
-    "href": "doc/ipw/ipw_gee.html",
-    "title": "IPW (GEE calibration)",
-    "section": "",
-    "text": "Inverse probability weighting where the propensity score parameters solve a generalised estimating equation (calibration-style constraints) rather than the maximum-likelihood score. Both smoothing variants from the literature are shown — gee_h_fun = 1 (logarithmic) and gee_h_fun = 2 (exponential).\nnonprobsvy version: 0.3.0  |  R: 4.6.1  |  run: 2026-08-09 06:02:50  |  commit: 1f2a799"
-  },
-  {
-    "objectID": "doc/ipw/ipw_gee.html#notes",
-    "href": "doc/ipw/ipw_gee.html#notes",
-    "title": "IPW (GEE calibration)",
-    "section": "Notes",
-    "text": "Notes\n\nDGP: the same simple default DGP used for the MLE table (linear outcome, logistic selection on x1 and x2).\nCompared to MLE, GEE typically gives slightly wider CIs because it solves a constraint system rather than maximising likelihood; that often translates into over-coverage."
-  },
-  {
     "objectID": "doc/mi/mi_pmm.html",
     "href": "doc/mi/mi_pmm.html",
     "title": "MI (predictive mean matching)",
@@ -91,6 +63,62 @@
     "text": "Notes\n\nDGP: default.\nThe analytical SE for NN-imputation does not account for the additional variability introduced by the donor selection step. Expect under-coverage; bootstrap variance is the recommended remedy.\nSweeps k = 1 and k = 5."
   },
   {
+    "objectID": "doc/ipw/ipw_kim2021.html",
+    "href": "doc/ipw/ipw_kim2021.html",
+    "title": "IPW (MLE) on the Kim et al. (2021) DGP",
+    "section": "",
+    "text": "Inverse probability weighting (MLE) on the data-generating process from Kim, Park, Chen & Wu (2021), JRSSA 184(3). The DGP draws x ~ N(2, 1) and three outcomes constructed so that all three have theoretical population mean 5. The non-probability sample oversamples the lower tail of x (70% from strata == TRUE, 30% from strata == FALSE).\nnonprobsvy version: 0.3.0  |  R: 4.6.1  |  run: 2026-08-16 05:52:27  |  commit: 84bcfb1"
+  },
+  {
+    "objectID": "doc/ipw/ipw_kim2021.html#notes",
+    "href": "doc/ipw/ipw_kim2021.html#notes",
+    "title": "IPW (MLE) on the Kim et al. (2021) DGP",
+    "section": "Notes",
+    "text": "Notes\n\ny1 = 1 + 2 x + e is linear in x — the propensity model is correctly specified for this outcome.\ny2 = 3 + x + 2 e is also linear in x but with a different scale.\ny3 = 2.5 + 0.5 x^2 + e is non-linear in x. The propensity adjustment still corrects the design bias, but residual coverage behaviour can differ — see the rows.\n\nSource: ncn-foreigners/software-tutorials/codes/2021-kim-et-al-jrssa.R."
+  },
+  {
+    "objectID": "doc/ipw/ipw_gee.html",
+    "href": "doc/ipw/ipw_gee.html",
+    "title": "IPW (GEE calibration)",
+    "section": "",
+    "text": "Inverse probability weighting where the propensity score parameters solve a generalised estimating equation (calibration-style constraints) rather than the maximum-likelihood score. Both smoothing variants from the literature are shown — gee_h_fun = 1 (logarithmic) and gee_h_fun = 2 (exponential).\nnonprobsvy version: 0.3.0  |  R: 4.6.1  |  run: 2026-08-16 05:47:27  |  commit: 84bcfb1"
+  },
+  {
+    "objectID": "doc/ipw/ipw_gee.html#notes",
+    "href": "doc/ipw/ipw_gee.html#notes",
+    "title": "IPW (GEE calibration)",
+    "section": "Notes",
+    "text": "Notes\n\nDGP: the same simple default DGP used for the MLE table (linear outcome, logistic selection on x1 and x2).\nCompared to MLE, GEE typically gives slightly wider CIs because it solves a constraint system rather than maximising likelihood; that often translates into over-coverage."
+  },
+  {
+    "objectID": "doc/ipw/ipw_mle.html",
+    "href": "doc/ipw/ipw_mle.html",
+    "title": "IPW (MLE)",
+    "section": "",
+    "text": "Empirical coverage of the inverse probability weighting estimator with the propensity score fit by maximum likelihood. Spike scope: one DGP (default), logit link, analytical variance.\nnonprobsvy version: 0.3.0  |  R: 4.6.1  |  run: 2026-08-16 05:35:55  |  commit: 84bcfb1"
+  },
+  {
+    "objectID": "doc/ipw/ipw_mle.html#notes",
+    "href": "doc/ipw/ipw_mle.html#notes",
+    "title": "IPW (MLE)",
+    "section": "Notes",
+    "text": "Notes\n\nDGP: linear outcome y = 1 + x1 + 0.5 x2 - 0.3 x3 + N(0, 1) with logistic selection biased by x1 and x2. True target is the population mean of y.\nThe MC SE of the point estimate is reported next to each cell — it bounds how precisely we can pin down the empirical coverage.\nBootstrap variants and the full estimator × DGP matrix will be added in subsequent passes."
+  },
+  {
+    "objectID": "doc/ipw/ipw_scad.html",
+    "href": "doc/ipw/ipw_scad.html",
+    "title": "IPW (variable selection: SCAD / lasso / MCP)",
+    "section": "",
+    "text": "Inverse probability weighting with a penalised propensity score. The selection formula includes a redundant covariate x3 (which the DGP does not use for selection); each penalty should learn to drop it.\nnonprobsvy version: 0.3.0  |  R: 4.6.1  |  run: 2026-08-16 05:34:04  |  commit: 84bcfb1"
+  },
+  {
+    "objectID": "doc/ipw/ipw_scad.html#notes",
+    "href": "doc/ipw/ipw_scad.html#notes",
+    "title": "IPW (variable selection: SCAD / lasso / MCP)",
+    "section": "Notes",
+    "text": "Notes\n\nDGP: default with selection formula ~ x1 + x2 + x3. True selection uses only x1 and x2, so x3 is the noise variable.\nEach replicate runs cross-validation inside control_sel(penalty = ...), which makes this script slower per replicate than the unpenalised IPW variants.\nCoverage differences across SCAD, lasso, and MCP largely come from how aggressively each penalty zeros out the noise coefficient."
+  },
+  {
     "objectID": "doc/mi/mi_npar.html",
     "href": "doc/mi/mi_npar.html",
     "title": "MI (nonparametric / loess)",
@@ -117,34 +145,6 @@
     "title": "MI (GLM)",
     "section": "Notes",
     "text": "Notes\n\nDGP: default (linear outcome, y = 1 + x1 + 0.5 x2 - 0.3 x3 + N(0,1)).\nThe outcome model is correctly specified for this DGP.\nAnalytical SE for GLM-based MI uses the standard linearisation argument and should yield well-calibrated CIs at the nominal level."
-  },
-  {
-    "objectID": "doc/ipw/ipw_scad.html",
-    "href": "doc/ipw/ipw_scad.html",
-    "title": "IPW (variable selection: SCAD / lasso / MCP)",
-    "section": "",
-    "text": "Inverse probability weighting with a penalised propensity score. The selection formula includes a redundant covariate x3 (which the DGP does not use for selection); each penalty should learn to drop it.\nnonprobsvy version: 0.3.0  |  R: 4.6.1  |  run: 2026-08-09 05:51:46  |  commit: 1f2a799"
-  },
-  {
-    "objectID": "doc/ipw/ipw_scad.html#notes",
-    "href": "doc/ipw/ipw_scad.html#notes",
-    "title": "IPW (variable selection: SCAD / lasso / MCP)",
-    "section": "Notes",
-    "text": "Notes\n\nDGP: default with selection formula ~ x1 + x2 + x3. True selection uses only x1 and x2, so x3 is the noise variable.\nEach replicate runs cross-validation inside control_sel(penalty = ...), which makes this script slower per replicate than the unpenalised IPW variants.\nCoverage differences across SCAD, lasso, and MCP largely come from how aggressively each penalty zeros out the noise coefficient."
-  },
-  {
-    "objectID": "doc/ipw/ipw_kim2021.html",
-    "href": "doc/ipw/ipw_kim2021.html",
-    "title": "IPW (MLE) on the Kim et al. (2021) DGP",
-    "section": "",
-    "text": "Inverse probability weighting (MLE) on the data-generating process from Kim, Park, Chen & Wu (2021), JRSSA 184(3). The DGP draws x ~ N(2, 1) and three outcomes constructed so that all three have theoretical population mean 5. The non-probability sample oversamples the lower tail of x (70% from strata == TRUE, 30% from strata == FALSE).\nnonprobsvy version: 0.3.0  |  R: 4.6.1  |  run: 2026-08-09 06:08:47  |  commit: 1f2a799"
-  },
-  {
-    "objectID": "doc/ipw/ipw_kim2021.html#notes",
-    "href": "doc/ipw/ipw_kim2021.html#notes",
-    "title": "IPW (MLE) on the Kim et al. (2021) DGP",
-    "section": "Notes",
-    "text": "Notes\n\ny1 = 1 + 2 x + e is linear in x — the propensity model is correctly specified for this outcome.\ny2 = 3 + x + 2 e is also linear in x but with a different scale.\ny3 = 2.5 + 0.5 x^2 + e is non-linear in x. The propensity adjustment still corrects the design bias, but residual coverage behaviour can differ — see the rows.\n\nSource: ncn-foreigners/software-tutorials/codes/2021-kim-et-al-jrssa.R."
   },
   {
     "objectID": "doc/dr/dr_scad.html",
