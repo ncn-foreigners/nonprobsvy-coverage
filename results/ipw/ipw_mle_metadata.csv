@@ -1,2 +1,2 @@
 script,estimator,dgp,n_cells,total_runtime_sec,workers,nonprobsvy_version,r_version,platform,commit_sha,run_date
-ipw_mle,ipw,default,4,363.910017490387,2,0.3.0,4.6.1,x86_64-pc-linux-gnu,9f1377a,2026-08-23T05:37:24Z
+ipw_mle,ipw,default,4,383.726739168167,2,0.3.0,4.6.1,x86_64-pc-linux-gnu,41b1b25,2026-08-30T10:28:20Z
