@@ -1,2 +1,2 @@
 script,estimator,dgp,n_cells,total_runtime_sec,workers,nonprobsvy_version,r_version,platform,commit_sha,run_date
-mi_npar,mi,default,1,29.241753578186,2,0.3.0,4.6.2,x86_64-pc-linux-gnu,4c982f8,2026-11-01T11:57:51Z
+mi_npar,mi,default,1,42.4275450706482,2,0.3.0,4.6.2,x86_64-pc-linux-gnu,dc045b2,2026-11-15T12:55:12Z
